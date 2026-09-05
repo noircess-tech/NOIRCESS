@@ -1,0 +1,1665 @@
+/* ========================================
+   NOIRCESS
+   ABOUT PAGE CSS
+   ======================================== */
+
+
+/* ========================================
+   1. ABOUT HERO
+   ======================================== */
+
+.about-hero {
+    position: relative;
+    min-height: calc(100vh - 76px);
+    display: flex;
+    align-items: center;
+    padding: 110px 0;
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            rgba(37, 99, 235, 0.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(37, 99, 235, 0.06),
+            transparent 30%
+        ),
+        var(--black);
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    right: -12%;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(59, 130, 246, 0.10);
+    border-radius: 50%;
+    box-shadow:
+        0 0 80px rgba(37, 99, 235, 0.08);
+    animation: aboutHeroGlow 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.about-hero-container {
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.about-hero-label {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 25px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.about-hero-content {
+    max-width: 900px;
+}
+
+.about-hero-content h1 {
+    max-width: 850px;
+    margin-bottom: 30px;
+    color: var(--white);
+    font-size: clamp(50px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -4px;
+}
+
+.about-hero-content h1 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.about-hero-content p {
+    max-width: 680px;
+    margin-bottom: 18px;
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.about-hero-content p:last-of-type {
+    margin-bottom: 36px;
+}
+
+.about-hero-button {
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25px;
+    color: var(--white);
+    background: var(--blue);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.22);
+}
+
+.about-hero-button:hover {
+    background: var(--blue-light);
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 40px rgba(37, 99, 235, 0.38);
+}
+
+@keyframes aboutHeroGlow {
+    0%,
+    100% {
+        transform: scale(0.92);
+        opacity: 0.45;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+
+/* ========================================
+   2. WHO WE ARE
+   ======================================== */
+
+.who-we-are {
+    position: relative;
+    padding: 120px 0;
+    background: var(--dark);
+    overflow: hidden;
+}
+
+.who-we-are-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.who-we-are-label {
+    display: inline-flex;
+    margin-bottom: 25px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.who-we-are-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.who-we-are-heading h2 {
+    color: var(--white);
+    font-size: clamp(44px, 5.5vw, 70px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.who-we-are-heading h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.who-we-are-text {
+    max-width: 580px;
+}
+
+.who-we-are-text p {
+    margin-bottom: 22px;
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.who-we-are-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   3. MISSION & VISION
+   ======================================== */
+
+.mission-vision {
+    position: relative;
+    padding: 100px 0;
+    background: var(--black);
+    overflow: hidden;
+}
+
+.mission-vision-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.mission,
+.vision {
+    position: relative;
+    min-height: 360px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.02)
+        );
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.mission::before,
+.vision::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 260px;
+    height: 260px;
+    background: rgba(37, 99, 235, 0.10);
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+.mission:hover,
+.vision:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59, 130, 246, 0.40);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.10),
+            rgba(255, 255, 255, 0.025)
+        );
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.30);
+}
+
+.mission > span,
+.vision > span {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+    color: var(--blue-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.mission h2,
+.vision h2 {
+    position: relative;
+    margin-bottom: 16px;
+    color: var(--white);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.mission p,
+.vision p {
+    position: relative;
+    max-width: 520px;
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   4. OUR VALUES
+   ======================================== */
+
+.values {
+    position: relative;
+    padding: 120px 0;
+    background: var(--dark);
+    overflow: hidden;
+}
+
+.values-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.values-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    column-gap: 80px;
+    align-items: end;
+    margin-bottom: 65px;
+}
+
+.values-label {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    margin-bottom: 20px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.values-intro h2 {
+    color: var(--white);
+    font-size: clamp(45px, 5.5vw, 70px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.values-intro h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.values-intro p {
+    max-width: 400px;
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.values-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.value-item {
+    min-height: 220px;
+    padding: 28px;
+    background: var(--dark-soft);
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+.value-item:hover {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.10),
+            rgba(255, 255, 255, 0.025)
+        );
+}
+
+.value-item > span {
+    display: block;
+    margin-bottom: 40px;
+    color: var(--blue-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.value-item h3 {
+    margin-bottom: 10px;
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.value-item p {
+    max-width: 300px;
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   5. OUR TEAM
+   ======================================== */
+
+.team {
+    position: relative;
+    padding: 120px 0;
+    background: var(--black);
+    overflow: hidden;
+}
+
+.team-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.team-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.team-label {
+    position: absolute;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transform: translateY(-30px);
+}
+
+.team-intro h2 {
+    max-width: 700px;
+    color: var(--white);
+    font-size: clamp(44px, 5.5vw, 70px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.team-intro h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.team-intro p {
+    max-width: 390px;
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.team-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.team-member {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    background: var(--dark-soft);
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.team-member:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59, 130, 246, 0.40);
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.30);
+}
+
+.team-image {
+    width: 100%;
+    height: 390px;
+    overflow: hidden;
+    background: var(--dark);
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-member:hover .team-image img {
+    transform: scale(1.04);
+}
+
+.team-member-info {
+    padding: 22px 24px 25px;
+}
+
+.team-member-info h3 {
+    margin-bottom: 5px;
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.team-member-info span {
+    color: var(--blue-light);
+    font-size: 12px;
+}
+
+
+/* ========================================
+   6. HOW WE THINK
+   ======================================== */
+
+.how-we-think {
+    position: relative;
+    padding: 120px 0;
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(37, 99, 235, 0.08),
+            transparent 35%
+        ),
+        var(--dark);
+    overflow: hidden;
+}
+
+.how-we-think-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.how-we-think-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 70px;
+}
+
+.how-we-think-label {
+    position: absolute;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transform: translateY(-30px);
+}
+
+.how-we-think-intro h2 {
+    max-width: 700px;
+    color: var(--white);
+    font-size: clamp(44px, 5.5vw, 70px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.how-we-think-intro h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.how-we-think-intro p {
+    max-width: 400px;
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.thinking-process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.thinking-item {
+    min-height: 280px;
+    padding: 30px;
+    border-right: 1px solid var(--border);
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+.thinking-item:last-child {
+    border-right: 0;
+}
+
+.thinking-item:hover {
+    background: rgba(37, 99, 235, 0.06);
+    transform: translateY(-4px);
+}
+
+.thinking-item > span {
+    display: block;
+    margin-bottom: 80px;
+    color: var(--blue-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.thinking-item h3 {
+    margin-bottom: 10px;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.thinking-item p {
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   7. OUR APPROACH
+   ======================================== */
+
+.our-approach {
+    position: relative;
+    padding: 120px 0;
+    background: var(--black);
+    overflow: hidden;
+}
+
+.our-approach-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.our-approach-intro {
+    margin-bottom: 75px;
+}
+
+.our-approach-label {
+    display: inline-flex;
+    margin-bottom: 20px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.our-approach-intro h2 {
+    margin-bottom: 20px;
+    color: var(--white);
+    font-size: clamp(45px, 5.5vw, 70px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.our-approach-intro h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.our-approach-intro p {
+    max-width: 520px;
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.our-approach-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.our-approach-step {
+    position: relative;
+    min-height: 300px;
+    padding: 28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.02)
+        );
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+}
+
+.our-approach-step:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59, 130, 246, 0.40);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.10),
+            rgba(255, 255, 255, 0.025)
+        );
+}
+
+.our-approach-step > span {
+    display: block;
+    margin-bottom: 100px;
+    color: var(--blue-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.our-approach-step h3 {
+    margin-bottom: 12px;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.our-approach-step p {
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   8. OUR FUTURE
+   ======================================== */
+
+.future {
+    position: relative;
+    padding: 130px 0;
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(37, 99, 235, 0.10),
+            transparent 35%
+        ),
+        var(--dark);
+    overflow: hidden;
+}
+
+.future-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.future-label {
+    display: inline-flex;
+    margin-bottom: 25px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.future-content {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.future-content h2 {
+    color: var(--white);
+    font-size: clamp(50px, 6vw, 78px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -4px;
+}
+
+.future-content h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.future-text {
+    max-width: 500px;
+}
+
+.future-text p {
+    margin-bottom: 22px;
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.future-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   9. CTA
+   ======================================== */
+
+.cta {
+    position: relative;
+    padding: 140px 0;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(37, 99, 235, 0.20),
+            transparent 45%
+        ),
+        var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.cta::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 520px;
+    height: 520px;
+    transform: translate(-50%, -50%);
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    animation: ctaGlow 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.cta::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    animation: ctaRing 8s linear infinite;
+    pointer-events: none;
+}
+
+.cta-container {
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 32px), 900px);
+    margin-inline: auto;
+    text-align: center;
+}
+
+.cta-label {
+    display: inline-flex;
+    margin-bottom: 25px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.cta h2 {
+    margin-bottom: 24px;
+    color: var(--white);
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -4px;
+}
+
+.cta h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+.cta p {
+    max-width: 500px;
+    margin: 0 auto 36px;
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.cta-button {
+    min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 28px;
+    color: var(--white);
+    background: var(--blue);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.25);
+}
+
+.cta-button:hover {
+    background: var(--blue-light);
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 45px rgba(37, 99, 235, 0.40);
+}
+
+@keyframes ctaGlow {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+}
+
+@keyframes ctaRing {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+/* ========================================
+   10. FOOTER
+   ======================================== */
+
+.footer {
+    position: relative;
+    padding: 75px 0 25px;
+    background: #010102;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.footer-container {
+    width: min(calc(100% - 32px), var(--container));
+    margin-inline: auto;
+}
+
+.footer-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 60px;
+    padding-bottom: 60px;
+}
+
+.footer-brand h2 {
+    margin-bottom: 12px;
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.footer-brand p {
+    max-width: 300px;
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    min-width: 180px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.footer-column a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gray-dark);
+    font-size: 12px;
+}
+
+.footer-column a i {
+    width: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-light);
+    font-size: 15px;
+}
+
+.footer-column a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+.footer-column a:hover i {
+    color: var(--blue-bright);
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+    color: var(--gray-dark);
+    font-size: 11px;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.footer-legal a {
+    color: var(--gray-dark);
+    font-size: 11px;
+}
+
+.footer-legal a:hover {
+    color: var(--white);
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1000px) {
+
+    .about-hero {
+        min-height: auto;
+        padding: 100px 0;
+    }
+
+    .who-we-are,
+    .values,
+    .team,
+    .how-we-think,
+    .our-approach,
+    .future {
+        padding: 90px 0;
+    }
+
+    .who-we-are-content {
+        gap: 50px;
+    }
+
+    .values-intro {
+        gap: 50px;
+    }
+
+    .values-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .thinking-process {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .thinking-item:nth-child(2) {
+        border-right: 0;
+    }
+
+    .thinking-item:nth-child(3),
+    .thinking-item:nth-child(4) {
+        border-top: 1px solid var(--border);
+    }
+
+    .our-approach-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .future-content {
+        gap: 50px;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    /* About Hero */
+
+    .about-hero {
+        min-height: calc(100svh - 68px);
+        padding: 80px 0;
+    }
+
+    .about-hero::before {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        right: -35%;
+    }
+
+    .about-hero-container,
+    .who-we-are-container,
+    .values-container,
+    .team-container,
+    .how-we-think-container,
+    .our-approach-container,
+    .future-container {
+        width: calc(100% - 28px);
+    }
+
+    .about-hero-label,
+    .who-we-are-label,
+    .values-label,
+    .team-label,
+    .how-we-think-label,
+    .our-approach-label,
+    .future-label {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .about-hero-content h1 {
+        margin-bottom: 24px;
+        font-size: clamp(44px, 12vw, 62px);
+        letter-spacing: -2.5px;
+    }
+
+    .about-hero-content p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .about-hero-button {
+        min-height: 50px;
+        padding: 0 21px;
+        font-size: 12px;
+    }
+
+
+    /* Who We Are */
+
+    .who-we-are {
+        padding: 80px 0;
+    }
+
+    .who-we-are-content {
+        display: block;
+    }
+
+    .who-we-are-heading h2 {
+        margin-bottom: 30px;
+        font-size: clamp(40px, 11vw, 56px);
+        letter-spacing: -2.2px;
+    }
+
+    .who-we-are-text p {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+
+    /* Mission & Vision */
+
+    .mission-vision {
+        padding: 70px 0;
+    }
+
+    .mission-vision-container {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .mission,
+    .vision {
+        min-height: 300px;
+        padding: 28px;
+    }
+
+    .mission > span,
+    .vision > span {
+        top: 25px;
+        left: 28px;
+    }
+
+    .mission h2,
+    .vision h2 {
+        font-size: 26px;
+    }
+
+    .mission p,
+    .vision p {
+        font-size: 13px;
+    }
+
+
+    /* Values */
+
+    .values {
+        padding: 80px 0;
+    }
+
+    .values-intro {
+        display: block;
+        margin-bottom: 45px;
+    }
+
+    .values-intro h2 {
+        margin-bottom: 20px;
+        font-size: clamp(40px, 11vw, 56px);
+        letter-spacing: -2.2px;
+    }
+
+    .values-intro p {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .values-list {
+        grid-template-columns: 1fr;
+        border-radius: var(--radius-md);
+    }
+
+    .value-item {
+        min-height: auto;
+        padding: 24px;
+    }
+
+    .value-item > span {
+        margin-bottom: 25px;
+    }
+
+
+    /* Team */
+
+    .team {
+        padding: 80px 0;
+    }
+
+    .team-intro {
+        display: block;
+        margin-bottom: 45px;
+    }
+
+    .team-label {
+        position: static;
+        display: inline-flex;
+        margin-bottom: 18px;
+        transform: none;
+    }
+
+    .team-intro h2 {
+        margin-bottom: 22px;
+        font-size: clamp(40px, 11vw, 56px);
+        letter-spacing: -2.2px;
+    }
+
+    .team-intro p {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .team-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .team-image {
+        height: 360px;
+    }
+
+
+    /* How We Think */
+
+    .how-we-think {
+        padding: 80px 0;
+    }
+
+    .how-we-think-intro {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .how-we-think-label {
+        position: static;
+        display: inline-flex;
+        margin-bottom: 18px;
+        transform: none;
+    }
+
+    .how-we-think-intro h2 {
+        margin-bottom: 22px;
+        font-size: clamp(40px, 11vw, 56px);
+        letter-spacing: -2.2px;
+    }
+
+    .how-we-think-intro p {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .thinking-process {
+        grid-template-columns: 1fr;
+    }
+
+    .thinking-item,
+    .thinking-item:nth-child(3),
+    .thinking-item:nth-child(4) {
+        min-height: 220px;
+        padding: 24px;
+        border-right: 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .thinking-item:first-child {
+        border-top: 0;
+    }
+
+    .thinking-item > span {
+        margin-bottom: 50px;
+    }
+
+
+    /* Our Approach */
+
+    .our-approach {
+        padding: 80px 0;
+    }
+
+    .our-approach-intro {
+        margin-bottom: 45px;
+    }
+
+    .our-approach-intro h2 {
+        margin-bottom: 20px;
+        font-size: clamp(40px, 11vw, 56px);
+        letter-spacing: -2.2px;
+    }
+
+    .our-approach-intro p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .our-approach-steps {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .our-approach-step {
+        min-height: 240px;
+        padding: 24px;
+    }
+
+    .our-approach-step > span {
+        margin-bottom: 65px;
+    }
+
+
+    /* Future */
+
+    .future {
+        padding: 85px 0;
+    }
+
+    .future-content {
+        display: block;
+    }
+
+    .future-content h2 {
+        margin-bottom: 28px;
+        font-size: clamp(44px, 12vw, 62px);
+        letter-spacing: -2.5px;
+    }
+
+    .future-text p {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+
+    /* CTA */
+
+    .cta {
+        padding: 100px 0;
+    }
+
+    .cta::before {
+        width: 360px;
+        height: 360px;
+    }
+
+    .cta::after {
+        width: 220px;
+        height: 220px;
+    }
+
+    .cta-container {
+        width: calc(100% - 28px);
+    }
+
+    .cta-label {
+        margin-bottom: 20px;
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .cta h2 {
+        margin-bottom: 20px;
+        font-size: clamp(44px, 12vw, 62px);
+        letter-spacing: -2.5px;
+    }
+
+    .cta p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .cta-button {
+        min-height: 50px;
+        padding: 0 23px;
+        font-size: 12px;
+    }
+
+
+    /* Footer */
+
+    .footer {
+        padding: 60px 0 22px;
+    }
+
+    .footer-container {
+        width: calc(100% - 28px);
+    }
+
+    .footer-main {
+        flex-direction: column;
+        gap: 40px;
+        padding-bottom: 45px;
+    }
+
+    .footer-brand h2 {
+        font-size: 21px;
+    }
+
+    .footer-brand p {
+        font-size: 12px;
+    }
+
+    .footer-column {
+        min-width: 0;
+        gap: 12px;
+    }
+
+    .footer-column h3 {
+        font-size: 12px;
+    }
+
+    .footer-column a {
+        font-size: 11px;
+    }
+
+    .footer-column a i {
+        width: 17px;
+        font-size: 14px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .footer-legal {
+        gap: 18px;
+    }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .about-hero {
+        padding: 70px 0;
+    }
+
+    .about-hero-container,
+    .who-we-are-container,
+    .values-container,
+    .team-container,
+    .how-we-think-container,
+    .our-approach-container,
+    .future-container,
+    .cta-container,
+    .footer-container {
+        width: calc(100% - 24px);
+    }
+
+    .about-hero-content h1,
+    .who-we-are-heading h2,
+    .values-intro h2,
+    .team-intro h2,
+    .how-we-think-intro h2,
+    .our-approach-intro h2 {
+        font-size: 38px;
+        letter-spacing: -1.8px;
+    }
+
+    .about-hero-content p,
+    .who-we-are-text p,
+    .values-intro p,
+    .team-intro p,
+    .how-we-think-intro p,
+    .our-approach-intro p,
+    .future-text p {
+        font-size: 13px;
+    }
+
+    .about-hero-button {
+        width: 100%;
+    }
+
+    .mission,
+    .vision {
+        min-height: 280px;
+        padding: 22px;
+    }
+
+    .values {
+        padding: 70px 0;
+    }
+
+    .value-item {
+        padding: 22px;
+    }
+
+    .team {
+        padding: 70px 0;
+    }
+
+    .team-image {
+        height: 320px;
+    }
+
+    .how-we-think,
+    .our-approach {
+        padding: 70px 0;
+    }
+
+    .thinking-item {
+        min-height: 200px;
+        padding: 22px;
+    }
+
+    .our-approach-step {
+        min-height: 220px;
+        padding: 22px;
+    }
+
+    .future {
+        padding: 75px 0;
+    }
+
+    .future-content h2 {
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+
+    .cta {
+        padding: 85px 0;
+    }
+
+    .cta::before {
+        width: 280px;
+        height: 280px;
+    }
+
+    .cta::after {
+        width: 170px;
+        height: 170px;
+    }
+
+    .cta h2 {
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+
+    .cta p {
+        font-size: 13px;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .about-hero::before,
+    .cta::before,
+    .cta::after {
+        animation: none;
+    }
+
+    .about-hero-button,
+    .mission,
+    .vision,
+    .team-member,
+    .our-approach-step,
+    .cta-button,
+    .footer-column a {
+        transition: none;
+    }
+
+}

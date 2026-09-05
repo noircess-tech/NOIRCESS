@@ -1,0 +1,4306 @@
+/* ========================================
+   HEADER
+   ======================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+
+    background: rgba(2, 2, 3, 0.78);
+
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+/* ========================================
+   HEADER CONTAINER
+   ======================================== */
+
+.header-container {
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    min-height: 76px;
+
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* ========================================
+   BRAND
+   ======================================== */
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+/* ========================================
+   LOGO
+   ======================================== */
+
+.logo {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: var(--white);
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 25px rgba(37, 99, 235, 0.25);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* ========================================
+   BRAND NAME
+   ======================================== */
+
+.brand-name {
+    color: var(--white);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.nav {
+    margin-left: auto;
+    margin-right: 32px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+}
+
+.nav a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 44px;
+
+    color: var(--gray);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+.nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 5px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--blue-light);
+
+    border-radius: var(--radius-pill);
+
+    transition: width var(--transition);
+}
+
+.nav a:hover {
+    color: var(--white);
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+
+/* ========================================
+   HEADER BUTTON
+   ======================================== */
+
+.header-button {
+    min-height: 44px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 20px;
+
+    flex-shrink: 0;
+
+    color: var(--white);
+
+    background: rgba(37, 99, 235, 0.12);
+
+    border: 1px solid rgba(59, 130, 246, 0.4);
+
+    border-radius: var(--radius-pill);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 0 25px rgba(37, 99, 235, 0.08);
+}
+
+.header-button:hover {
+    background: rgba(37, 99, 235, 0.22);
+
+    border-color: rgba(59, 130, 246, 0.7);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.2);
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 900px) {
+
+    .nav {
+        gap: 18px;
+        margin-right: 20px;
+    }
+
+    .nav a {
+        font-size: 13px;
+    }
+
+    .header-button {
+        padding: 0 16px;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .header-container {
+        min-height: 68px;
+
+        width: calc(100% - 28px);
+    }
+
+    .logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .brand {
+        gap: 9px;
+    }
+
+    .brand-name {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .header-button {
+        margin-left: auto;
+
+        min-height: 42px;
+
+        padding: 0 15px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .header-container {
+        width: calc(100% - 24px);
+    }
+
+    .logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+        letter-spacing: 1.5px;
+    }
+
+    .header-button {
+        padding: 0 12px;
+
+        font-size: 11px;
+    }
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+
+.hero {
+    position: relative;
+
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            rgba(37, 99, 235, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(37, 99, 235, 0.06),
+            transparent 30%
+        ),
+        var(--black);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   HERO BACKGROUND DETAIL
+   ======================================== */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    top: 15%;
+    right: -15%;
+
+    width: 500px;
+    height: 500px;
+
+    background: rgba(37, 99, 235, 0.08);
+
+    border: 1px solid rgba(59, 130, 246, 0.08);
+
+    border-radius: 50%;
+
+    filter: blur(1px);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   HERO CONTAINER
+   ======================================== */
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   HERO CONTENT
+   ======================================== */
+
+.hero-content {
+    max-width: 900px;
+}
+
+
+/* ========================================
+   HERO LABEL
+   ======================================== */
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 24px;
+
+    color: var(--blue-bright);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   HERO HEADING
+   ======================================== */
+
+.hero h1 {
+    max-width: 900px;
+
+    margin-bottom: 28px;
+
+    color: var(--white);
+
+    font-size: clamp(
+        48px,
+        7vw,
+        88px
+    );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+}
+
+
+/* ========================================
+   HERO DESCRIPTION
+   ======================================== */
+
+.hero p {
+    max-width: 650px;
+
+    margin-bottom: 38px;
+
+    color: var(--gray);
+
+    font-size: clamp(
+        16px,
+        2vw,
+        19px
+    );
+
+    line-height: 1.75;
+}
+
+
+/* ========================================
+   HERO ACTIONS
+   ======================================== */
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ========================================
+   HERO BUTTON
+   ======================================== */
+
+.hero-button {
+    min-height: 50px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 24px;
+
+    border-radius: var(--radius-pill);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   PRIMARY BUTTON
+   ======================================== */
+
+.hero-button.primary {
+    color: var(--white);
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.22);
+}
+
+.hero-button.primary:hover {
+    background: var(--blue-light);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 40px rgba(37, 99, 235, 0.4);
+}
+
+
+/* ========================================
+   SECONDARY BUTTON
+   ======================================== */
+
+.hero-button.secondary {
+    color: var(--white);
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid var(--border-light);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(255, 255, 255, 0.25);
+
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: auto;
+
+        padding: 110px 0 100px;
+    }
+
+    .hero-content {
+        max-width: 760px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .hero {
+        min-height: calc(100svh - 68px);
+
+        padding: 80px 0;
+
+        align-items: center;
+
+        background:
+            radial-gradient(
+                circle at 85% 20%,
+                rgba(37, 99, 235, 0.16),
+                transparent 40%
+            ),
+            var(--black);
+    }
+
+    .hero::before {
+        width: 300px;
+        height: 300px;
+
+        top: 10%;
+        right: -35%;
+    }
+
+    .hero-container {
+        width: calc(100% - 28px);
+    }
+
+    .hero-label {
+        margin-bottom: 18px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero h1 {
+        margin-bottom: 22px;
+
+        font-size: clamp(
+            44px,
+            13vw,
+            64px
+        );
+
+        line-height: 1;
+
+        letter-spacing: -2.5px;
+    }
+
+    .hero p {
+        margin-bottom: 30px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .hero-actions {
+        width: 100%;
+
+        gap: 10px;
+    }
+
+    .hero-button {
+        min-height: 50px;
+
+        padding: 0 20px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .hero {
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(
+            40px,
+            13vw,
+            54px
+        );
+
+        letter-spacing: -2px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-button {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+
+.hero {
+    position: relative;
+
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            rgba(37, 99, 235, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(37, 99, 235, 0.06),
+            transparent 30%
+        ),
+        var(--black);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   HERO BACKGROUND DETAIL
+   ======================================== */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    top: 15%;
+    right: -15%;
+
+    width: 500px;
+    height: 500px;
+
+    background: rgba(37, 99, 235, 0.08);
+
+    border: 1px solid rgba(59, 130, 246, 0.08);
+
+    border-radius: 50%;
+
+    filter: blur(1px);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   HERO CONTAINER
+   ======================================== */
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   HERO CONTENT
+   ======================================== */
+
+.hero-content {
+    max-width: 900px;
+}
+
+
+/* ========================================
+   HERO LABEL
+   ======================================== */
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 24px;
+
+    color: var(--blue-bright);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   HERO HEADING
+   ======================================== */
+
+.hero h1 {
+    max-width: 900px;
+
+    margin-bottom: 28px;
+
+    color: var(--white);
+
+    font-size: clamp(
+        48px,
+        7vw,
+        88px
+    );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+}
+
+
+/* ========================================
+   HERO DESCRIPTION
+   ======================================== */
+
+.hero p {
+    max-width: 650px;
+
+    margin-bottom: 38px;
+
+    color: var(--gray);
+
+    font-size: clamp(
+        16px,
+        2vw,
+        19px
+    );
+
+    line-height: 1.75;
+}
+
+
+/* ========================================
+   HERO ACTIONS
+   ======================================== */
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ========================================
+   HERO BUTTON
+   ======================================== */
+
+.hero-button {
+    min-height: 50px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 24px;
+
+    border-radius: var(--radius-pill);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   PRIMARY BUTTON
+   ======================================== */
+
+.hero-button.primary {
+    color: var(--white);
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.22);
+}
+
+.hero-button.primary:hover {
+    background: var(--blue-light);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 40px rgba(37, 99, 235, 0.4);
+}
+
+
+/* ========================================
+   SECONDARY BUTTON
+   ======================================== */
+
+.hero-button.secondary {
+    color: var(--white);
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid var(--border-light);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(255, 255, 255, 0.25);
+
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: auto;
+
+        padding: 110px 0 100px;
+    }
+
+    .hero-content {
+        max-width: 760px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .hero {
+        min-height: calc(100svh - 68px);
+
+        padding: 80px 0;
+
+        align-items: center;
+
+        background:
+            radial-gradient(
+                circle at 85% 20%,
+                rgba(37, 99, 235, 0.16),
+                transparent 40%
+            ),
+            var(--black);
+    }
+
+    .hero::before {
+        width: 300px;
+        height: 300px;
+
+        top: 10%;
+        right: -35%;
+    }
+
+    .hero-container {
+        width: calc(100% - 28px);
+    }
+
+    .hero-label {
+        margin-bottom: 18px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero h1 {
+        margin-bottom: 22px;
+
+        font-size: clamp(
+            44px,
+            13vw,
+            64px
+        );
+
+        line-height: 1;
+
+        letter-spacing: -2.5px;
+    }
+
+    .hero p {
+        margin-bottom: 30px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .hero-actions {
+        width: 100%;
+
+        gap: 10px;
+    }
+
+    .hero-button {
+        min-height: 50px;
+
+        padding: 0 20px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .hero {
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(
+            40px,
+            13vw,
+            54px
+        );
+
+        letter-spacing: -2px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-button {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   SERVICES SECTION
+   ======================================== */
+
+.services {
+    position: relative;
+
+    padding: 110px 0;
+
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(37, 99, 235, 0.10),
+            transparent 35%
+        ),
+        var(--dark);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   SERVICES CONTAINER
+   ======================================== */
+
+.services-container {
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   SERVICES INTRO
+   ======================================== */
+
+.services-intro {
+    margin-bottom: 55px;
+}
+
+
+/* ========================================
+   SERVICES LABEL
+   ======================================== */
+
+.services-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 18px;
+
+    color: var(--blue-light);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   SERVICES INTRO CONTENT
+   ======================================== */
+
+.services-intro-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+
+/* ========================================
+   SERVICES HEADING
+   ======================================== */
+
+.services-intro h2 {
+    max-width: 700px;
+
+    color: var(--white);
+
+    font-size: clamp(
+        40px,
+        5vw,
+        64px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+}
+
+
+/* ========================================
+   SERVICES HEADING HIGHLIGHT
+   ======================================== */
+
+.services-intro h2 span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--blue-light);
+}
+
+
+/* ========================================
+   SERVICES DESCRIPTION
+   ======================================== */
+
+.services-intro p {
+    max-width: 360px;
+
+    color: var(--gray);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   SERVICES LIST
+   ======================================== */
+
+.services-list {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* ========================================
+   SERVICE ITEM
+   ======================================== */
+
+.service-item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 420px;
+
+    padding: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+
+/* ========================================
+   SERVICE ITEM HOVER
+   ======================================== */
+
+.service-item:hover {
+    transform: translateY(-6px);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.10),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border-color: rgba(59, 130, 246, 0.40);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.30),
+        0 0 35px rgba(37, 99, 235, 0.10);
+}
+
+
+/* ========================================
+   SERVICE IMAGE
+   ======================================== */
+
+.service-image {
+    position: relative;
+
+    width: 100%;
+
+    height: 180px;
+
+    overflow: hidden;
+
+    background: var(--black);
+}
+
+
+/* ========================================
+   SERVICE IMAGE OVERLAY
+   ======================================== */
+
+.service-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 45%,
+            rgba(2, 2, 3, 0.65)
+        );
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   SERVICE IMAGE
+   ======================================== */
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+/* ========================================
+   IMAGE HOVER
+   ======================================== */
+
+.service-item:hover .service-image img {
+    transform: scale(1.05);
+
+    filter: brightness(1.08);
+}
+
+
+/* ========================================
+   SERVICE NUMBER
+   ======================================== */
+
+.service-number {
+    margin: 22px 24px 12px;
+
+    color: var(--blue-light);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+/* ========================================
+   SERVICE CONTENT
+   ======================================== */
+
+.service-content {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    padding: 0 24px 24px;
+}
+
+
+/* ========================================
+   SERVICE TITLE
+   ======================================== */
+
+.service-content h3 {
+    margin-bottom: 10px;
+
+    color: var(--white);
+
+    font-size: 19px;
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+
+/* ========================================
+   SERVICE DESCRIPTION
+   ======================================== */
+
+.service-content p {
+    max-width: 330px;
+
+    margin-bottom: 22px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+/* ========================================
+   SERVICE BUTTON
+   ======================================== */
+
+.service-button {
+    width: fit-content;
+
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: auto;
+
+    padding: 0 17px;
+
+    color: var(--white);
+
+    background: var(--blue);
+
+    border: 1px solid transparent;
+
+    border-radius: var(--radius-pill);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 0 20px rgba(37, 99, 235, 0.15);
+}
+
+
+/* ========================================
+   SERVICE BUTTON HOVER
+   ======================================== */
+
+.service-button:hover {
+    background: var(--blue-light);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 28px rgba(37, 99, 235, 0.30);
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1000px) {
+
+    .services {
+        padding: 90px 0;
+    }
+
+    .services-intro-content {
+        gap: 35px;
+    }
+
+    .services-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-item {
+        min-height: 410px;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .services {
+        padding: 80px 0;
+    }
+
+    .services-container {
+        width: calc(100% - 28px);
+    }
+
+    .services-intro {
+        margin-bottom: 40px;
+    }
+
+    .services-label {
+        margin-bottom: 15px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .services-intro-content {
+        display: block;
+    }
+
+    .services-intro h2 {
+        margin-bottom: 20px;
+
+        font-size: clamp(
+            38px,
+            11vw,
+            54px
+        );
+
+        line-height: 1.04;
+
+        letter-spacing: -2px;
+    }
+
+    .services-intro p {
+        max-width: 100%;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+    .services-list {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .service-item {
+        min-height: 400px;
+    }
+
+    .service-image {
+        height: 190px;
+    }
+
+    .service-number {
+        margin: 20px 22px 10px;
+    }
+
+    .service-content {
+        padding: 0 22px 22px;
+    }
+
+    .service-content h3 {
+        font-size: 18px;
+    }
+
+    .service-content p {
+        font-size: 13px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .services {
+        padding: 70px 0;
+    }
+
+    .services-container {
+        width: calc(100% - 24px);
+    }
+
+    .services-intro h2 {
+        font-size: 38px;
+
+        letter-spacing: -1.8px;
+    }
+
+    .service-item {
+        min-height: 390px;
+    }
+
+    .service-image {
+        height: 175px;
+    }
+
+    .service-content {
+        padding: 0 20px 20px;
+    }
+
+    .service-button {
+        min-height: 38px;
+
+        padding: 0 15px;
+
+        font-size: 11px;
+    }
+}
+
+/* ========================================
+   ABOUT SECTION
+   ======================================== */
+
+.about {
+    position: relative;
+
+    padding: 110px 0;
+
+    background: var(--black);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   ABOUT CONTAINER
+   ======================================== */
+
+.about-container {
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   ABOUT LABEL
+   ======================================== */
+
+.about-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 22px;
+
+    color: var(--blue-light);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   ABOUT CONTENT
+   ======================================== */
+
+.about-content {
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 80px;
+
+    align-items: start;
+
+    padding-bottom: 80px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* ========================================
+   ABOUT HEADING
+   ======================================== */
+
+.about-heading h2 {
+    max-width: 700px;
+
+    color: var(--white);
+
+    font-size: clamp(
+        42px,
+        5.5vw,
+        70px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+}
+
+
+/* ========================================
+   ABOUT HEADING HIGHLIGHT
+   ======================================== */
+
+.about-heading h2 span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--blue-light);
+}
+
+
+/* ========================================
+   ABOUT TEXT
+   ======================================== */
+
+.about-text {
+    max-width: 500px;
+
+    padding-top: 8px;
+}
+
+
+.about-text p {
+    margin-bottom: 20px;
+
+    color: var(--gray);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   ABOUT BUTTON
+   ======================================== */
+
+.about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    margin-top: 12px;
+
+    padding: 0 20px;
+
+    color: var(--white);
+
+    background: rgba(37, 99, 235, 0.12);
+
+    border: 1px solid rgba(59, 130, 246, 0.40);
+
+    border-radius: var(--radius-pill);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    box-shadow:
+        0 0 25px rgba(37, 99, 235, 0.08);
+}
+
+
+.about-button:hover {
+    background: rgba(37, 99, 235, 0.22);
+
+    border-color: rgba(59, 130, 246, 0.70);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.20);
+}
+
+
+/* ========================================
+   ABOUT POINTS
+   ======================================== */
+
+.about-points {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1px;
+
+    margin-top: 70px;
+
+    background: var(--border);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   ABOUT POINT
+   ======================================== */
+
+.about-point {
+    min-height: 190px;
+
+    padding: 26px;
+
+    background: var(--dark-soft);
+
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+
+.about-point:hover {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.10),
+            rgba(255, 255, 255, 0.025)
+        );
+}
+
+
+/* ========================================
+   ABOUT POINT NUMBER
+   ======================================== */
+
+.about-point > span {
+    display: block;
+
+    margin-bottom: 30px;
+
+    color: var(--blue-light);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+/* ========================================
+   ABOUT POINT TITLE
+   ======================================== */
+
+.about-point h3 {
+    margin-bottom: 10px;
+
+    color: var(--white);
+
+    font-size: 16px;
+    font-weight: 600;
+
+    line-height: 1.35;
+}
+
+
+/* ========================================
+   ABOUT POINT DESCRIPTION
+   ======================================== */
+
+.about-point p {
+    color: var(--gray-dark);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1000px) {
+
+    .about {
+        padding: 90px 0;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 50px;
+
+        padding-bottom: 65px;
+    }
+
+    .about-points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-point {
+        min-height: 180px;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .about {
+        padding: 80px 0;
+    }
+
+    .about-container {
+        width: calc(100% - 28px);
+    }
+
+    .about-label {
+        margin-bottom: 18px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .about-content {
+        display: block;
+
+        padding-bottom: 55px;
+    }
+
+    .about-heading h2 {
+        margin-bottom: 28px;
+
+        font-size: clamp(
+            40px,
+            11vw,
+            56px
+        );
+
+        line-height: 1.04;
+
+        letter-spacing: -2.2px;
+    }
+
+    .about-text {
+        max-width: 100%;
+
+        padding-top: 0;
+    }
+
+    .about-text p {
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+
+    .about-button {
+        width: fit-content;
+
+        min-height: 44px;
+
+        padding: 0 18px;
+
+        font-size: 11px;
+    }
+
+    .about-points {
+        grid-template-columns: 1fr;
+
+        margin-top: 45px;
+
+        border-radius: var(--radius-md);
+    }
+
+    .about-point {
+        min-height: auto;
+
+        padding: 24px;
+    }
+
+    .about-point > span {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .about {
+        padding: 70px 0;
+    }
+
+    .about-container {
+        width: calc(100% - 24px);
+    }
+
+    .about-heading h2 {
+        font-size: 38px;
+
+        letter-spacing: -1.8px;
+    }
+
+    .about-text p {
+        font-size: 13px;
+    }
+
+    .about-button {
+        width: 100%;
+    }
+
+    .about-point {
+        padding: 22px;
+    }
+}
+
+/* ========================================
+   WHY NOIRCESS SECTION
+   ======================================== */
+
+.why-noircess {
+    position: relative;
+
+    padding: 110px 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(37, 99, 235, 0.08),
+            transparent 35%
+        ),
+        var(--dark);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.why-noircess-container {
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   INTRO
+   ======================================== */
+
+.why-noircess-intro {
+    margin-bottom: 60px;
+}
+
+
+/* ========================================
+   LABEL
+   ======================================== */
+
+.why-noircess-label {
+    display: inline-flex;
+
+    margin-bottom: 20px;
+
+    color: var(--blue-light);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   HEADING AREA
+   ======================================== */
+
+.why-noircess-heading {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+
+/* ========================================
+   HEADING
+   ======================================== */
+
+.why-noircess-heading h2 {
+    max-width: 700px;
+
+    color: var(--white);
+
+    font-size: clamp(
+        42px,
+        5.5vw,
+        70px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+}
+
+
+/* ========================================
+   HEADING HIGHLIGHT
+   ======================================== */
+
+.why-noircess-heading h2 span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--blue-light);
+}
+
+
+/* ========================================
+   DESCRIPTION
+   ======================================== */
+
+.why-noircess-heading p {
+    max-width: 380px;
+
+    color: var(--gray);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   WHY NOIRCESS POINTS
+   ======================================== */
+
+.why-noircess-points {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+
+/* ========================================
+   POINT
+   ======================================== */
+
+.why-noircess-point {
+    position: relative;
+
+    min-height: 240px;
+
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.02)
+        );
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+
+/* ========================================
+   POINT GLOW
+   ======================================== */
+
+.why-noircess-point::before {
+    content: "";
+
+    position: absolute;
+
+    top: -80px;
+    right: -80px;
+
+    width: 180px;
+    height: 180px;
+
+    background: rgba(37, 99, 235, 0.10);
+
+    border-radius: 50%;
+
+    filter: blur(35px);
+
+    opacity: 0;
+
+    transition: opacity var(--transition);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   POINT HOVER
+   ======================================== */
+
+.why-noircess-point:hover {
+    transform: translateY(-6px);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.10),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border-color: rgba(59, 130, 246, 0.40);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.30),
+        0 0 30px rgba(37, 99, 235, 0.10);
+}
+
+.why-noircess-point:hover::before {
+    opacity: 1;
+}
+
+
+/* ========================================
+   POINT NUMBER
+   ======================================== */
+
+.why-noircess-point > span {
+    display: block;
+
+    margin-bottom: auto;
+
+    color: var(--blue-light);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+/* ========================================
+   POINT TITLE
+   ======================================== */
+
+.why-noircess-point h3 {
+    margin-bottom: 10px;
+
+    color: var(--white);
+
+    font-size: 19px;
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+
+/* ========================================
+   POINT DESCRIPTION
+   ======================================== */
+
+.why-noircess-point p {
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1000px) {
+
+    .why-noircess {
+        padding: 90px 0;
+    }
+
+    .why-noircess-heading {
+        gap: 35px;
+    }
+
+    .why-noircess-points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .why-noircess {
+        padding: 80px 0;
+    }
+
+    .why-noircess-container {
+        width: calc(100% - 28px);
+    }
+
+    .why-noircess-intro {
+        margin-bottom: 40px;
+    }
+
+    .why-noircess-label {
+        margin-bottom: 16px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .why-noircess-heading {
+        display: block;
+    }
+
+    .why-noircess-heading h2 {
+        margin-bottom: 24px;
+
+        font-size: clamp(
+            40px,
+            11vw,
+            56px
+        );
+
+        line-height: 1.04;
+
+        letter-spacing: -2.2px;
+    }
+
+    .why-noircess-heading p {
+        max-width: 100%;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+    .why-noircess-points {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .why-noircess-point {
+        min-height: 210px;
+
+        padding: 24px;
+    }
+
+    .why-noircess-point h3 {
+        font-size: 18px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .why-noircess {
+        padding: 70px 0;
+    }
+
+    .why-noircess-container {
+        width: calc(100% - 24px);
+    }
+
+    .why-noircess-heading h2 {
+        font-size: 38px;
+
+        letter-spacing: -1.8px;
+    }
+
+    .why-noircess-heading p {
+        font-size: 13px;
+    }
+
+    .why-noircess-point {
+        min-height: 200px;
+
+        padding: 22px;
+    }
+
+    .why-noircess-point h3 {
+        font-size: 17px;
+    }
+
+    .why-noircess-point p {
+        font-size: 12px;
+    }
+}
+
+/* ========================================
+   HOW WE WORK / APPROACH
+   ======================================== */
+
+.approach {
+    position: relative;
+
+    padding: 130px 0;
+
+    background: var(--black);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   AMBIENT BACKGROUND
+   ======================================== */
+
+.approach::before {
+    content: "";
+
+    position: absolute;
+
+    top: 10%;
+    left: 50%;
+
+    width: 600px;
+    height: 600px;
+
+    transform: translateX(-50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(37, 99, 235, 0.10),
+        transparent 65%
+    );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+
+    animation: approachGlow 7s ease-in-out infinite;
+}
+
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.approach-container {
+    position: relative;
+    z-index: 1;
+
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   INTRO
+   ======================================== */
+
+.approach-intro {
+    margin-bottom: 90px;
+}
+
+
+/* ========================================
+   LABEL
+   ======================================== */
+
+.approach-label {
+    display: inline-flex;
+
+    margin-bottom: 22px;
+
+    color: var(--blue-light);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   HEADING AREA
+   ======================================== */
+
+.approach-heading {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+
+/* ========================================
+   HEADING
+   ======================================== */
+
+.approach-heading h2 {
+    max-width: 700px;
+
+    color: var(--white);
+
+    font-size: clamp(
+        48px,
+        6vw,
+        78px
+    );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+}
+
+
+/* ========================================
+   HEADING HIGHLIGHT
+   ======================================== */
+
+.approach-heading h2 span {
+    display: block;
+
+    color: var(--blue-light);
+}
+
+
+/* ========================================
+   DESCRIPTION
+   ======================================== */
+
+.approach-heading p {
+    max-width: 390px;
+
+    color: var(--gray);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   APPROACH STEPS
+   ======================================== */
+
+.approach-steps {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 0;
+}
+
+
+/* ========================================
+   CONNECTING LINE
+   ======================================== */
+
+.approach-steps::before {
+    content: "";
+
+    position: absolute;
+
+    top: 31px;
+    left: 12.5%;
+    right: 12.5%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(59, 130, 246, 0.8),
+            rgba(59, 130, 246, 0.25),
+            rgba(59, 130, 246, 0.8),
+            transparent
+        );
+
+    animation: approachLine 4s linear infinite;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   STEP
+   ======================================== */
+
+.approach-step {
+    position: relative;
+
+    min-height: 300px;
+
+    padding: 0 28px 28px;
+
+    border-left: 1px solid var(--border);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+
+.approach-step:last-child {
+    border-right: 1px solid var(--border);
+}
+
+
+/* ========================================
+   STEP NUMBER
+   ======================================== */
+
+.approach-number {
+    position: relative;
+    z-index: 2;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 70px;
+
+    color: var(--blue-bright);
+
+    background: var(--black);
+
+    border: 1px solid rgba(59, 130, 246, 0.45);
+
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 0 0 8px var(--black),
+        0 0 25px rgba(37, 99, 235, 0.15);
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+}
+
+
+/* ========================================
+   STEP NUMBER DOT
+   ======================================== */
+
+.approach-number::before {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    top: 7px;
+    right: 7px;
+
+    background: var(--blue-light);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 12px var(--blue-light);
+
+    animation: approachPulse 2s ease-in-out infinite;
+}
+
+
+/* ========================================
+   STEP HOVER
+   ======================================== */
+
+.approach-step:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(59, 130, 246, 0.25);
+}
+
+
+.approach-step:hover .approach-number {
+    color: var(--white);
+
+    background: var(--blue);
+
+    border-color: var(--blue-light);
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 0 8px var(--black),
+        0 0 35px rgba(37, 99, 235, 0.40);
+}
+
+
+/* ========================================
+   STEP TITLE
+   ======================================== */
+
+.approach-step h3 {
+    margin-bottom: 14px;
+
+    color: var(--white);
+
+    font-size: 22px;
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    transition: color var(--transition);
+}
+
+
+.approach-step:hover h3 {
+    color: var(--blue-bright);
+}
+
+
+/* ========================================
+   STEP DESCRIPTION
+   ======================================== */
+
+.approach-step p {
+    max-width: 250px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes approachGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform:
+            translateX(-50%)
+            scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1.1);
+    }
+}
+
+
+@keyframes approachPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.15);
+    }
+}
+
+
+@keyframes approachLine {
+
+    0% {
+        opacity: 0.35;
+
+        background-position: 0 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.35;
+
+        background-position: 200% 0;
+    }
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1000px) {
+
+    .approach {
+        padding: 100px 0;
+    }
+
+    .approach-intro {
+        margin-bottom: 70px;
+    }
+
+    .approach-heading {
+        gap: 40px;
+    }
+
+    .approach-steps {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 50px 0;
+    }
+
+    .approach-steps::before {
+        display: none;
+    }
+
+    .approach-step {
+        min-height: 260px;
+
+        padding: 0 28px;
+    }
+
+    .approach-step:nth-child(2) {
+        border-right: 1px solid var(--border);
+    }
+
+    .approach-step:nth-child(3) {
+        border-top: 1px solid var(--border);
+
+        padding-top: 45px;
+    }
+
+    .approach-step:nth-child(4) {
+        border-top: 1px solid var(--border);
+
+        padding-top: 45px;
+    }
+
+    .approach-number {
+        margin-bottom: 45px;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .approach {
+        padding: 85px 0;
+    }
+
+    .approach-container {
+        width: calc(100% - 28px);
+    }
+
+    .approach-intro {
+        margin-bottom: 55px;
+    }
+
+    .approach-label {
+        margin-bottom: 18px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .approach-heading {
+        display: block;
+    }
+
+    .approach-heading h2 {
+        margin-bottom: 25px;
+
+        font-size: clamp(
+            42px,
+            12vw,
+            58px
+        );
+
+        line-height: 1;
+
+        letter-spacing: -2.5px;
+    }
+
+    .approach-heading p {
+        max-width: 100%;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+    .approach-steps {
+        display: flex;
+        flex-direction: column;
+
+        gap: 0;
+    }
+
+    .approach-steps::before {
+        display: block;
+
+        top: 31px;
+        bottom: 31px;
+
+        left: 30px;
+        right: auto;
+
+        width: 1px;
+        height: auto;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(59, 130, 246, 0.8),
+                rgba(59, 130, 246, 0.15),
+                rgba(59, 130, 246, 0.8)
+            );
+    }
+
+    .approach-step,
+    .approach-step:nth-child(3),
+    .approach-step:nth-child(4) {
+
+        min-height: 190px;
+
+        padding: 0 0 45px 82px;
+
+        border: 0;
+    }
+
+    .approach-step:last-child {
+        padding-bottom: 0;
+    }
+
+    .approach-number {
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 62px;
+        height: 62px;
+
+        margin: 0;
+    }
+
+    .approach-step h3 {
+        padding-top: 7px;
+
+        margin-bottom: 10px;
+
+        font-size: 20px;
+    }
+
+    .approach-step p {
+        max-width: 100%;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .approach {
+        padding: 75px 0;
+    }
+
+    .approach-container {
+        width: calc(100% - 24px);
+    }
+
+    .approach-heading h2 {
+        font-size: 40px;
+
+        letter-spacing: -2px;
+    }
+
+    .approach-step,
+    .approach-step:nth-child(3),
+    .approach-step:nth-child(4) {
+        padding-left: 72px;
+    }
+
+    .approach-number {
+        width: 54px;
+        height: 54px;
+
+        font-size: 10px;
+
+        box-shadow:
+            0 0 0 6px var(--black),
+            0 0 20px rgba(37, 99, 235, 0.15);
+    }
+
+    .approach-steps::before {
+        left: 26px;
+    }
+
+    .approach-step h3 {
+        font-size: 18px;
+    }
+
+    .approach-step p {
+        font-size: 12px;
+    }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .approach::before,
+    .approach-number::before,
+    .approach-steps::before {
+        animation: none;
+    }
+}
+
+/* ========================================
+   HOW WE WORK / APPROACH
+   ======================================== */
+
+.approach {
+    position: relative;
+
+    padding: 130px 0;
+
+    background: var(--black);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   AMBIENT BACKGROUND
+   ======================================== */
+
+.approach::before {
+    content: "";
+
+    position: absolute;
+
+    top: 10%;
+    left: 50%;
+
+    width: 600px;
+    height: 600px;
+
+    transform: translateX(-50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(37, 99, 235, 0.10),
+        transparent 65%
+    );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+
+    animation: approachGlow 7s ease-in-out infinite;
+}
+
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.approach-container {
+    position: relative;
+    z-index: 1;
+
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   INTRO
+   ======================================== */
+
+.approach-intro {
+    margin-bottom: 90px;
+}
+
+
+/* ========================================
+   LABEL
+   ======================================== */
+
+.approach-label {
+    display: inline-flex;
+
+    margin-bottom: 22px;
+
+    color: var(--blue-light);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   HEADING AREA
+   ======================================== */
+
+.approach-heading {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+
+/* ========================================
+   HEADING
+   ======================================== */
+
+.approach-heading h2 {
+    max-width: 700px;
+
+    color: var(--white);
+
+    font-size: clamp(
+        48px,
+        6vw,
+        78px
+    );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+}
+
+
+/* ========================================
+   HEADING HIGHLIGHT
+   ======================================== */
+
+.approach-heading h2 span {
+    display: block;
+
+    color: var(--blue-light);
+}
+
+
+/* ========================================
+   DESCRIPTION
+   ======================================== */
+
+.approach-heading p {
+    max-width: 390px;
+
+    color: var(--gray);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   APPROACH STEPS
+   ======================================== */
+
+.approach-steps {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 0;
+}
+
+
+/* ========================================
+   CONNECTING LINE
+   ======================================== */
+
+.approach-steps::before {
+    content: "";
+
+    position: absolute;
+
+    top: 31px;
+    left: 12.5%;
+    right: 12.5%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(59, 130, 246, 0.8),
+            rgba(59, 130, 246, 0.25),
+            rgba(59, 130, 246, 0.8),
+            transparent
+        );
+
+    animation: approachLine 4s linear infinite;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   STEP
+   ======================================== */
+
+.approach-step {
+    position: relative;
+
+    min-height: 300px;
+
+    padding: 0 28px 28px;
+
+    border-left: 1px solid var(--border);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+
+.approach-step:last-child {
+    border-right: 1px solid var(--border);
+}
+
+
+/* ========================================
+   STEP NUMBER
+   ======================================== */
+
+.approach-number {
+    position: relative;
+    z-index: 2;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 70px;
+
+    color: var(--blue-bright);
+
+    background: var(--black);
+
+    border: 1px solid rgba(59, 130, 246, 0.45);
+
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 0 0 8px var(--black),
+        0 0 25px rgba(37, 99, 235, 0.15);
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+}
+
+
+/* ========================================
+   STEP NUMBER DOT
+   ======================================== */
+
+.approach-number::before {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    top: 7px;
+    right: 7px;
+
+    background: var(--blue-light);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 12px var(--blue-light);
+
+    animation: approachPulse 2s ease-in-out infinite;
+}
+
+
+/* ========================================
+   STEP HOVER
+   ======================================== */
+
+.approach-step:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(59, 130, 246, 0.25);
+}
+
+
+.approach-step:hover .approach-number {
+    color: var(--white);
+
+    background: var(--blue);
+
+    border-color: var(--blue-light);
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 0 8px var(--black),
+        0 0 35px rgba(37, 99, 235, 0.40);
+}
+
+
+/* ========================================
+   STEP TITLE
+   ======================================== */
+
+.approach-step h3 {
+    margin-bottom: 14px;
+
+    color: var(--white);
+
+    font-size: 22px;
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    transition: color var(--transition);
+}
+
+
+.approach-step:hover h3 {
+    color: var(--blue-bright);
+}
+
+
+/* ========================================
+   STEP DESCRIPTION
+   ======================================== */
+
+.approach-step p {
+    max-width: 250px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes approachGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform:
+            translateX(-50%)
+            scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1.1);
+    }
+}
+
+
+@keyframes approachPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.15);
+    }
+}
+
+
+@keyframes approachLine {
+
+    0% {
+        opacity: 0.35;
+
+        background-position: 0 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.35;
+
+        background-position: 200% 0;
+    }
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1000px) {
+
+    .approach {
+        padding: 100px 0;
+    }
+
+    .approach-intro {
+        margin-bottom: 70px;
+    }
+
+    .approach-heading {
+        gap: 40px;
+    }
+
+    .approach-steps {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 50px 0;
+    }
+
+    .approach-steps::before {
+        display: none;
+    }
+
+    .approach-step {
+        min-height: 260px;
+
+        padding: 0 28px;
+    }
+         
+}
+
+.approach-step:nth-child(2) {
+    border-right: 1px solid var(--border);
+}
+
+.approach-step:nth-child(3) {
+    border-top: 1px solid var(--border);
+
+    padding-top: 45px;
+}
+
+.approach-step:nth-child(4) {
+    border-top: 1px solid var(--border);
+
+    padding-top: 45px;
+}
+
+.approach-number {margin-bottom: 45px;
+
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.cta {
+    position: relative;
+    padding: 140px 0;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(37, 99, 235, 0.20),
+            transparent 45%
+        ),
+        var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+/* Decorative glow */
+
+.cta::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 520px;
+    height: 520px;
+    transform: translate(-50%, -50%);
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: ctaGlow 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.cta::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    animation: ctaRing 8s linear infinite;
+    pointer-events: none;
+}
+
+/* Container */
+
+.cta-container {
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 32px), 900px);
+    margin-inline: auto;
+    text-align: center;
+}
+
+/* Label */
+
+.cta-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Heading */
+
+.cta h2 {
+    margin-bottom: 24px;
+    color: var(--white);
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -4px;
+}
+
+.cta h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+/* Description */
+
+.cta p {
+    max-width: 500px;
+    margin: 0 auto 36px;
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+/* Button */
+
+.cta-button {
+    min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 28px;
+    color: var(--white);
+    background: var(--blue);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.25),
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cta-button:hover {
+    background: var(--blue-light);
+    transform: translateY(-4px);
+    border-color: var(--blue-bright);
+    box-shadow:
+        0 0 45px rgba(37, 99, 235, 0.40),
+        0 15px 35px rgba(0, 0, 0, 0.30);
+}
+
+/* Animations */
+
+@keyframes ctaGlow {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+}
+
+@keyframes ctaRing {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 767px) {
+
+    .cta {
+        padding: 100px 0;
+    }
+
+    .cta::before {
+        width: 360px;
+        height: 360px;
+    }
+
+    .cta::after {
+        width: 220px;
+        height: 220px;
+    }
+
+    .cta-container {
+        width: calc(100% - 28px);
+    }
+
+    .cta-label {
+        margin-bottom: 20px;
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .cta h2 {
+        margin-bottom: 20px;
+        font-size: clamp(44px, 12vw, 62px);
+        line-height: 1;
+        letter-spacing: -2.5px;
+    }
+
+    .cta p {
+        max-width: 420px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .cta-button {
+        min-height: 50px;
+        padding: 0 23px;
+        font-size: 12px;
+    }
+}
+
+/* Small mobile */
+
+@media (max-width: 400px) {
+
+    .cta {
+        padding: 85px 0;
+    }
+
+    .cta::before {
+        width: 280px;
+        height: 280px;
+    }
+
+    .cta::after {
+        width: 170px;
+        height: 170px;
+    }
+
+    .cta-container {
+        width: calc(100% - 24px);
+    }
+
+    .cta h2 {
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+
+    .cta p {
+        font-size: 13px;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cta::before,
+    .cta::after {
+        animation: none;
+    }
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.cta {
+    position: relative;
+    padding: 140px 0;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(37, 99, 235, 0.20),
+            transparent 45%
+        ),
+        var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+/* Decorative glow */
+
+.cta::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 520px;
+    height: 520px;
+    transform: translate(-50%, -50%);
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: ctaGlow 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.cta::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    animation: ctaRing 8s linear infinite;
+    pointer-events: none;
+}
+
+/* Container */
+
+.cta-container {
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 32px), 900px);
+    margin-inline: auto;
+    text-align: center;
+}
+
+/* Label */
+
+.cta-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Heading */
+
+.cta h2 {
+    margin-bottom: 24px;
+    color: var(--white);
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -4px;
+}
+
+.cta h2 span {
+    display: block;
+    color: var(--blue-light);
+}
+
+/* Description */
+
+.cta p {
+    max-width: 500px;
+    margin: 0 auto 36px;
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+/* Button */
+
+.cta-button {
+    min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 28px;
+    color: var(--white);
+    background: var(--blue);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.25),
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cta-button:hover {
+    background: var(--blue-light);
+    transform: translateY(-4px);
+    border-color: var(--blue-bright);
+    box-shadow:
+        0 0 45px rgba(37, 99, 235, 0.40),
+        0 15px 35px rgba(0, 0, 0, 0.30);
+}
+
+/* Animations */
+
+@keyframes ctaGlow {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+}
+
+@keyframes ctaRing {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 767px) {
+
+    .cta {
+        padding: 100px 0;
+    }
+
+    .cta::before {
+        width: 360px;
+        height: 360px;
+    }
+
+    .cta::after {
+        width: 220px;
+        height: 220px;
+    }
+
+    .cta-container {
+        width: calc(100% - 28px);
+    }
+
+    .cta-label {
+        margin-bottom: 20px;
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .cta h2 {
+        margin-bottom: 20px;
+        font-size: clamp(44px, 12vw, 62px);
+        line-height: 1;
+        letter-spacing: -2.5px;
+    }
+
+    .cta p {
+        max-width: 420px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .cta-button {
+        min-height: 50px;
+        padding: 0 23px;
+        font-size: 12px;
+    }
+}
+
+/* Small mobile */
+
+@media (max-width: 400px) {
+
+    .cta {
+        padding: 85px 0;
+    }
+
+    .cta::before {
+        width: 280px;
+        height: 280px;
+    }
+
+    .cta::after {
+        width: 170px;
+        height: 170px;
+    }
+
+    .cta-container {
+        width: calc(100% - 24px);
+    }
+
+    .cta h2 {
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+
+    .cta p {
+        font-size: 13px;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cta::before,
+    .cta::after {
+        animation: none;
+    }
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    position: relative;
+
+    padding: 75px 0 25px;
+
+    background: #010102;
+
+    border-top: 1px solid var(--border);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   FOOTER CONTAINER
+   ======================================== */
+
+.footer-container {
+    width: min(
+        calc(100% - 32px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   FOOTER MAIN
+   ======================================== */
+
+.footer-main {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 60px;
+
+    padding-bottom: 60px;
+}
+
+
+/* ========================================
+   FOOTER BRAND
+   ======================================== */
+
+.footer-brand h2 {
+    margin-bottom: 12px;
+
+    color: var(--white);
+
+    font-size: 24px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.footer-brand p {
+    max-width: 300px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   FOOTER CONTACT
+   ======================================== */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 13px;
+
+    min-width: 180px;
+}
+
+
+/* ========================================
+   CONTACT TITLE
+   ======================================== */
+
+.footer-column h3 {
+    margin-bottom: 10px;
+
+    color: var(--white);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ========================================
+   CONTACT LINKS
+   ======================================== */
+
+.footer-column a {
+    color: var(--gray-dark);
+
+    font-size: 12px;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+.footer-column a i{
+    width:18px;
+    display: inline-flex;
+    align-items: center;
+    color: var(--blue-light);
+    font-size: 15px;
+}
+
+.footer-column a:hover {
+    color: var(--blue-light);
+
+    transform: translateX(4px);
+}
+
+.footer-column a:hover i{
+    color: var(--blue-bright);
+}
+
+
+
+/* ========================================
+   FOOTER BOTTOM
+   ======================================== */
+
+.footer-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+.footer-bottom p {
+    color: var(--gray-dark);
+
+    font-size: 11px;
+}
+
+
+/* ========================================
+   LEGAL LINKS
+   ======================================== */
+
+.footer-legal {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.footer-legal a {
+    color: var(--gray-dark);
+
+    font-size: 11px;
+}
+
+
+.footer-legal a:hover {
+    color: var(--white);
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    .footer {
+        padding: 60px 0 22px;
+    }
+
+    .footer-container {
+        width: calc(100% - 28px);
+    }
+
+    .footer-main {
+        flex-direction: column;
+
+        gap: 40px;
+
+        padding-bottom: 45px;
+    }
+
+    .footer-brand h2 {
+        font-size: 21px;
+    }
+
+    .footer-brand p {
+        font-size: 12px;
+    }
+
+    .footer-column {
+        min-width: 0;
+    }
+
+    .footer-column h3 {
+        font-size: 12px;
+    }
+
+    .footer-column a {
+        font-size: 11px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 14px;
+    }
+
+    .footer-legal {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .footer-column {
+        min-width: 0;
+        gap: 12px;
+    }
+
+    .footer-column a {
+        font-size: 11px;
+    }
+
+    .footer-column a i {
+        width: 17px;
+        font-size: 14px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 400px) {
+
+    .footer-container {
+        width: calc(100% - 24px);
+    }
+
+    .footer-legal {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+}
+
