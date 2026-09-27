@@ -4344,12 +4344,12 @@
 @media (max-width: 768px) {
 
     /* HEADER */
-    header {
+.header {
         position: relative;
         padding: 15px 20px;
     }
 
-    header .nav {
+    .header .nav {
         display: none;
         position: absolute;
         top: 100%;
@@ -4364,11 +4364,11 @@
         z-index: 1000;
     }
 
-    header .nav.active {
+    .header .nav.active {
         display: flex;
     }
 
-    header .nav a {
+    .header .nav a {
         display: block;
         width: 100%;
         padding: 13px 15px;
