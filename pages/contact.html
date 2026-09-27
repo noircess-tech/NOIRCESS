@@ -21,8 +21,22 @@
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <script src="../js/script.js" defer></script>
-</head>
 
+    <script>
+    window.formspree =
+        window.formspree ||
+        function () {
+            (formspree.q = formspree.q || []).push(arguments);
+        };
+
+    formspree('initForm', {
+        formElement: '#contact-form',
+        formId: 'mqpagyql'
+    });
+</script>
+
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</head>
 
 <body>
 
@@ -258,7 +272,8 @@
                     <form
                         class="contact-form"
                         action="https://formspree.io/f/mqpagyql"
-                        method="POST"
+                        method="post"
+                        id="contact-form"
                     >
 
 
