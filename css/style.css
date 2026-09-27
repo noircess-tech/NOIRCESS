@@ -797,3 +797,42 @@ padding: 8px;
     }
 
 }
+
+@media (max-width: 768px) {
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 240px;
+        padding: 10px;
+        flex-direction: column;
+        gap: 5px;
+        background: #080808;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .nav a {
+        display: block;
+        width: 100%;
+        padding: 13px 15px;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: 0.3s ease;
+    }
+
+    .nav a:hover {
+        background: rgba(0, 110, 255, 0.15);
+        color: #006eff;
+        padding-left: 20px;
+    }
+}
