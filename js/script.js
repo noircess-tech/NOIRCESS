@@ -233,7 +233,7 @@ faqItems.forEach(item => {
 // CONTACT FORM VALIDATION
 // ========================================
 
-const contactForm = document.querySelector("#contact-form");
+const contactForm = document.querySelector(".contact-form");
 
 if (contactForm) {
 
