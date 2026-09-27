@@ -233,57 +233,90 @@ faqItems.forEach(item => {
 // CONTACT FORM VALIDATION
 // ========================================
 
-const contactForm = document.querySelector(".contact-form");
+const form = document.querySelector("#contact-form");
+const successMessage = document.querySelector("#form-success");
 
-if (contactForm) {
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-    contactForm.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-        const name = document.querySelector("#name");
-        const email = document.querySelector("#email");
-        const message = document.querySelector("#message");
-
-        let valid = true;
-
-        // Name validation
-        if (name && name.value.trim() === "") {
-            showError(name, "Please enter your name.");
-            valid = false;
-        } else if (name) {
-            clearError(name);
-        }
-
-        // Email validation
-        if (email && !validateEmail(email.value.trim())) {
-            showError(email, "Please enter a valid email address.");
-            valid = false;
-        } else if (email) {
-            clearError(email);
-        }
-
-        // Message validation
-        if (message && message.value.trim() === "") {
-            showError(message, "Please enter your message.");
-            valid = false;
-        } else if (message) {
-            clearError(message);
-        }
-
-        if (valid) {
-
-            showSuccessMessage(
-                "Thank you! Your message has been submitted successfully."
-            );
-
-            contactForm.reset();
-
-        }
-
+    // Clear previous errors
+    form.querySelectorAll(".form-error").forEach(error => {
+        error.remove();
     });
 
+    let isValid = true;
+
+    // Required fields
+    const requiredFields = form.querySelectorAll("[required]");
+
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            showError(field, "This field is required.");
+            isValid = false;
+        }
+    });
+
+    // Stop if form is invalid
+    if (!isValid) {
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "https://formspree.io/f/mqpagyql",
+            {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                    Accept: "application/json"
+                }
+            }
+        );
+
+        if (response.ok) {
+            form.reset();
+
+            successMessage.textContent =
+                "Your message has been sent successfully.";
+
+            successMessage.style.display = "block";
+        } else {
+            successMessage.textContent =
+                "Something went wrong. Please try again.";
+
+            successMessage.style.display = "block";
+        }
+
+    } catch (error) {
+        successMessage.textContent =
+            "Unable to send your message. Please try again.";
+
+        successMessage.style.display = "block";
+    }
+});
+
+
+// Show error
+function showError(field, message) {
+    const error = document.createElement("span");
+
+    error.className = "form-error";
+    error.textContent = message;
+
+    field.parentElement.appendChild(error);
 }
+
+
+// Clear error when user starts typing
+form.querySelectorAll("input, select, textarea").forEach(field => {
+    field.addEventListener("input", () => {
+        const error = field.parentElement.querySelector(".form-error");
+
+        if (error) {
+            error.remove();
+        }
+    });
+});
 
 
 // ========================================
