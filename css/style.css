@@ -621,7 +621,7 @@ padding: 8px;
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: #820b0b;
+    background: #006eff;
     display: block;
     transition: 0.3s ease;
 }
