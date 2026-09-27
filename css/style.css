@@ -607,9 +607,13 @@ button {
 
 .menu-toggle {
     display: none;
+    justify-content: center;
     flex-direction: column;
     gap: 5px;
-    background: none;
+    width: 42px;
+height: 42px;
+padding: 8px;
+    background: transparent;
     border: none;
     cursor: pointer;
 }
@@ -617,8 +621,9 @@ button {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: #fff;
+    background: #820b0b;
     display: block;
+    transition: 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -628,10 +633,167 @@ button {
     }
 
     .nav-menu {
-        display: none;
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        width: 260px;
+        padding: 12px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        background: rgba(8, 8, 8, 0.98);
+        border: rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+
+        transition: 
+        opacity 0.3s ease
+        tranform 0.3s ease
+        visibility 0.3s ease;
+
+        z-index: 1000;
     }
 
     .nav-menu.active {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
+}
+
+.nav-menu a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 13px 16px;
+
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    border-radius: 9px;
+
+    transition: background 0.25 ease
+    color 0.25 ease
+    padding-left 0.25 ease;
+}
+
+/* Hover */
+
+.nav-menu a:hover {
+    color: #ffffff;
+    background: rgba(0, 110, 255, 0.12);
+    padding-left: 21px;
+}
+
+
+/* Active page */
+
+.nav-menu a.active {
+    color: #ffffff;
+    background: rgba(0, 110, 255, 0.18);
+}
+
+.nav-menu a.active::before {
+    content: "";
+
+    position: absolute;
+    left: 7px;
+
+    width: 3px;
+    height: 18px;
+
+    border-radius: 5px;
+    background: #006eff;
+}
+
+
+/* Start a Project */
+
+.nav-menu .start-project {
+    margin-top: 8px;
+    justify-content: center;
+
+    background: #006eff;
+    color: #ffffff;
+
+    padding: 13px 16px;
+    border-radius: 9px;
+
+    font-weight: 600;
+}
+
+.nav-menu .start-project:hover {
+    background: #0057cc;
+    padding-left: 16px;
+}
+
+/* ========================================
+   START A PROJECT
+======================================== */
+
+.start-project {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    background: #006eff;
+    color: #ffffff;
+
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: 1px solid #006eff;
+    border-radius: 8px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Hover */
+
+.start-project:hover {
+    background: transparent;
+    color: #ffffff;
+
+    border-color: #006eff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(0, 110, 255, 0.25);
+}
+
+
+/* Click */
+
+.start-project:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+
+    .start-project {
+        width: 100%;
+        margin-top: 10px;
+        padding: 13px 18px;
+        text-align: center;
+    }
+
 }
