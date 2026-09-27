@@ -4207,3 +4207,191 @@
     }
 }
 
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Header */
+    .header {
+        padding: 15px 20px;
+        position: relative;
+    }
+
+    /* Navigation */
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        width: 240px;
+        padding: 10px;
+        flex-direction: column;
+        gap: 4px;
+        background: #080808;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .nav a {
+        width: 100%;
+        padding: 13px 15px;
+        box-sizing: border-box;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: auto;
+        padding: 80px 20px 60px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 10vw, 56px);
+        line-height: 1.05;
+    }
+
+    .hero p {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    /* Hero buttons */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        max-width: 280px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    /* Sections */
+    section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Cards / grids */
+    .services-list
+    {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Footer */
+    footer {
+        padding: 40px 20px 25px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+
+/* Smaller phones */
+@media (max-width: 480px) {
+
+    .header {
+        padding: 14px 16px;
+    }
+
+    .hero {
+        padding: 65px 16px 50px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .nav {
+        right: 16px;
+        width: calc(100% - 32px);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* HEADER */
+    header {
+        position: relative;
+        padding: 15px 20px;
+    }
+
+    header .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        width: 240px;
+        padding: 10px;
+        flex-direction: column;
+        gap: 5px;
+        background: #080808;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        z-index: 1000;
+    }
+
+    header .nav.active {
+        display: flex;
+    }
+
+    header .nav a {
+        display: block;
+        width: 100%;
+        padding: 13px 15px;
+        box-sizing: border-box;
+    }
+
+
+    /* HERO */
+    .hero {
+        width: 100%;
+        min-height: auto;
+        padding: 80px 20px 60px;
+        box-sizing: border-box;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        line-height: 1.05;
+    }
+
+    .hero p {
+        font-size: 16px;
+        line-height: 1.6;
+        max-width: 100%;
+    }
+}
