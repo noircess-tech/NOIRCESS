@@ -1,0 +1,550 @@
+
+/* ========================================
+   NOIRCESS — LAYOUT SYSTEM
+   File: layouts.css
+======================================== */
+
+/* ----------------------------------------
+   1. Main Containers
+---------------------------------------- */
+
+.container {
+  width: min(100% - (var(--page-gutter) * 2), var(--container-width));
+  margin-inline: auto;
+}
+
+.container--wide {
+  width: min(100% - (var(--page-gutter) * 2), var(--container-wide));
+  margin-inline: auto;
+}
+
+.container--narrow {
+  width: min(100% - (var(--page-gutter) * 2), 760px);
+  margin-inline: auto;
+}
+
+.container--full {
+  width: 100%;
+  padding-inline: var(--page-gutter);
+}
+
+/* ----------------------------------------
+   2. Page Layout
+---------------------------------------- */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex: 1;
+  width: 100%;
+}
+
+.page-section {
+  position: relative;
+  width: 100%;
+  padding-block: clamp(64px, 8vw, 112px);
+}
+
+.page-section--compact {
+  padding-block: clamp(40px, 5vw, 72px);
+}
+
+.page-section--large {
+  padding-block: clamp(88px, 11vw, 144px);
+}
+
+.page-section--white {
+  background: var(--color-white);
+}
+
+.page-section--soft {
+  background: var(--color-background);
+}
+
+.page-section--dark {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.page-section--blue {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* ----------------------------------------
+   3. Section Headings
+---------------------------------------- */
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.section-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-heading--left {
+  margin-right: auto;
+  text-align: left;
+}
+
+.section-heading__title {
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+
+.section-heading--center .section-heading__title {
+  margin-inline: auto;
+}
+
+.section-heading__description {
+  max-width: 620px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.section-heading--center .section-heading__description {
+  margin-inline: auto;
+}
+
+.page-section--dark .section-heading__description {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ----------------------------------------
+   4. General Layout Utilities
+---------------------------------------- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.stack--small {
+  gap: var(--space-2);
+}
+
+.stack--large {
+  gap: var(--space-6);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.split--start {
+  align-items: flex-start;
+}
+
+.split--end {
+  align-items: flex-end;
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.content-narrow {
+  max-width: 680px;
+}
+
+.content-medium {
+  max-width: 900px;
+}
+
+.content-wide {
+  max-width: 1100px;
+}
+
+/* ----------------------------------------
+   5. Grid Layouts
+---------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.grid--services {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.grid--products {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.grid--projects {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.grid--team {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* ----------------------------------------
+   6. Two-Column Layouts
+---------------------------------------- */
+
+.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+}
+
+.two-column--wide-left {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.two-column--wide-right {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.two-column--top {
+  align-items: start;
+}
+
+.two-column--reverse > :first-child {
+  order: 2;
+}
+
+.two-column--reverse > :last-child {
+  order: 1;
+}
+
+/* ----------------------------------------
+   7. Hero Layouts
+---------------------------------------- */
+
+.hero {
+  position: relative;
+  width: 100%;
+  padding-block: clamp(80px, 11vw, 144px);
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(36px, 6vw, 88px);
+}
+
+.hero__content {
+  max-width: 680px;
+}
+
+.hero__title {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.hero__description {
+  max-width: 580px;
+  margin-bottom: 32px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.hero__visual {
+  position: relative;
+  min-width: 0;
+}
+
+.hero--centered {
+  text-align: center;
+}
+
+.hero--centered .hero__inner {
+  grid-template-columns: minmax(0, 900px);
+  justify-content: center;
+}
+
+.hero--centered .hero__content,
+.hero--centered .hero__description {
+  margin-inline: auto;
+}
+
+.hero--centered .hero__actions {
+  justify-content: center;
+}
+
+/* ----------------------------------------
+   8. Image and Visual Layouts
+---------------------------------------- */
+
+.visual-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--color-light-blue);
+}
+
+.visual-frame img,
+.visual-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.visual-frame--square {
+  aspect-ratio: 1 / 1;
+}
+
+.visual-frame--landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.visual-frame--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.visual-frame--portrait {
+  aspect-ratio: 3 / 4;
+}
+
+/* ----------------------------------------
+   9. Call-to-Action Layout
+---------------------------------------- */
+
+.cta-section {
+  padding-block: clamp(64px, 8vw, 104px);
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: clamp(32px, 5vw, 64px);
+  border-radius: var(--radius-xl);
+  background: var(--color-light-blue);
+}
+
+.cta-content {
+  max-width: 680px;
+}
+
+.cta-content p {
+  max-width: 580px;
+  margin-top: 16px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------
+   10. Content Width and Spacing
+---------------------------------------- */
+
+.prose {
+  max-width: 760px;
+}
+
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+.flow-content > * + * {
+  margin-top: var(--space-4);
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+/* ----------------------------------------
+   11. Responsive Layouts
+---------------------------------------- */
+
+@media (max-width: 1100px) {
+  .grid--4,
+  .grid--team {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid--services,
+  .grid--products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero__inner {
+    gap: 40px;
+  }
+
+  .two-column {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-section {
+    padding-block: 64px;
+  }
+
+  .page-section--large {
+    padding-block: 80px;
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4,
+  .grid--services,
+  .grid--products,
+  .grid--projects,
+  .grid--team {
+    grid-template-columns: 1fr;
+  }
+
+  .two-column,
+  .two-column--wide-left,
+  .two-column--wide-right,
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .two-column--reverse > :first-child,
+  .two-column--reverse > :last-child {
+    order: initial;
+  }
+
+  .hero {
+    padding-block: 72px;
+  }
+
+  .hero__visual {
+    width: 100%;
+  }
+
+  .split {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cta-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cta-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-section {
+    padding-block: 48px;
+  }
+
+  .hero {
+    padding-block: 56px;
+  }
+
+  .hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .cta-inner {
+    padding: 28px 22px;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+  }
+
+  .cta-actions .btn {
+    width: 100%;
+  }
+
+  .container,
+  .container--wide,
+  .container--narrow {
+    width: calc(100% - 40px);
+  }
+}

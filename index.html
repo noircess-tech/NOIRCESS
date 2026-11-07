@@ -1,439 +1,567 @@
+
 <!DOCTYPE html>
-<html>
-   <head>
-     <meta charset="UTF-8">
-     <meta name="viewport"
-     content="width=device width,initial-scale+1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-     <title>
-           Home | Noircess
-     </title>
-     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-      <script src="/js/script.js" defer></script>
-   </head>  
+  <meta
+    name="description"
+    content="NOIRCESS creates innovative digital experiences and technology solutions that help businesses move forward."
+  >
 
-   <body>
-     <header class="header">
+  <meta name="theme-color" content="#ffffff">
+  <title>NOIRCESS — Technology. Innovation. Impact.</title>
 
-        <div class="header-container">
+  <!-- Existing NOIRCESS design system -->
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/animations.css">
+  <link rel="stylesheet" href="./css/pages.css">
+  <link rel="stylesheet" href="./css/responsive.css">
 
-        <a href="index.html" class="brand">
-            <span class="logo">
-            <img src="images/noircess-logo.jpeg" alt="Noircess">
-            </span>
+  
+<script src="../js/main.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+</head>
 
-            <span class="brand-name">Noircess</span>
+<body class="home-page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner container--wide">
+
+      <a class="header-logo" href="./index.html" aria-label="NOIRCESS home">
+        NOIRCESS<span class="brand-dot">.</span>
+      </a>
+
+      <nav class="header-nav" id="main-navigation" aria-label="Main navigation">
+        <a href="./index.html" class="header-nav__link active" aria-current="page">Home</a>
+        <a href="./pages/about.html" class="header-nav__link">About</a>
+        <a href="./pages/services.html" class="header-nav__link">Services</a>
+        <a href="./pages/products.html" class="header-nav__link">Products</a>
+        <a href="./pages/project.html" class="header-nav__link">Projects</a>
+                <a href="./pages/Team.html" class="header-nav__link">Team</a>
+        <a href="./pages/pricing.html" class="header-nav__link">Pricing</a>
+        <a href="./pages/contact.html" class="header-nav__link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-search" href="search.html" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.5"></circle>
+            <path d="m16 16 4.2 4.2"></path>
+          </svg>
         </a>
 
-        <nav class="nav nav-link nav-menu">
-            <a href="index.html">Home</a>
-            <a href="pages/about.html">About</a>
-            <a href="pages/service.html">Services</a>
-            <a href="pages/solutions.html">Solutions</a>
-            <a href="pages/contact.html">Contact</a>
-        </nav>
+        <a href="./pages/contact.html" class="btn btn--primary header-cta">
+          Get in Touch <span aria-hidden="true">↗</span>
+        </a>
 
-        <a href="pages/contact.html" class="header-button"
-         class="start-project">Start a Project</a>
-    
-         <button class="menu-toggle" aria-label="Toggle Navigation" type="button">
-            <span></span>
-            <span></span>
-            <span></span>
-         </button>
-        
-     </header>
+        <button
+          class="header-menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-controls="main-navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-     <section class="hero">
-
-        <div class="hero-container">
-
-        <div class="hero-content">
-
-        <span class="hero-label">
-        <p>Technology. Creativity. Responsibility</p>
-        </span>
-        <h1>Building Digital Solutions For What's Next</h1>
-         <p>Noircess helps businesses turn ideas into powerful digital products,platform and
-        experiences.</p>
-
-        <div class="hero-actions">
-        <a href="pages/contact.html" class="hero-button primary">Start a Project</a>
-        <a href="pages/service.html" class="hero-button secondary">Explore Services</a>
-                   
-                    </div>
-
-        </div>
-        
-        </div>
-
-     </section>
-
-     <section class="services">
-
-        <div class="services-container">
-
-            <div class="services-intro">
-          
-        <span class="services-label">OUR SERVICES</span>
-
-        <div class="services-intro-content">
-
-        <h2>Technology Solutions <span>Built Around Your Business</span> </h2>
-
-        <p>We combine technology, creativity, and strategic thinking to help businesses 
-            build, transform and operate better.</p>
-
-     </div>
-
-       </div>
-
-
-        <div class="services-list">
-
-            <article class="service-item">
-                <div class="service-image"> <img src="images/software development.jpeg" 
-                    alt="sofware development"> 
-                </div>
-                
-                <div class="service-number">01</div>
-                   
-             <div class="service-content">
-
-            <h3>Software Development</h3>
-               <p>We design and build reliable digital products and software solutions
-                tailored to business needs.</p>
-        
-                <a href="pages/service.html"#sofware-development class="service-button">Learn More</a>
-
-             </div>    
-
-            </article>
-
-        <article class="service-item">
-            <div class="service-image"> <img src="images/digital transformation.jpeg" 
-            alt="Digital Transformation"></div>
-
-                <div class="service-number">02</div>
-                     <div class="service-content">
-
-            <h3>Digital Transformation</h3>
-                <p>We help businesses modernise their processes,operations, and customer
-                    experience through technology.</p>
-
-                    <a href="service.html"#digital-transformation class="service-button">
-                        Learn More</a>
-
-            </div>
-
-            </article>
-
-        <article class="service-item">       
-            <div class="service-image"> <img src="images/ai.jpeg" alt="Artificial Intelligence">
-                </div>
-
-                <div class="service-number">03</div>
-                   <div class="service-content"> 
-            <h3>Artificial Intelligence</h3>
-                <p>We apply AI to create smarter products,automate processes, and unlock new
-                    opportunities.</p>
-         
-                    <a href="service.html"#artificial-intelligence class="service-button">
-                        Learn More</a>
-             </div>
-
-        </article>
-
-    <article class="service-item">
-        <div class="service-image"> <img src="images/creative services.jpeg" 
-            alt="Creative Services">
-        </div> 
-        
-        <div class="service-number">04</div>
-
-        <div class="service-content">
-            <h3>Creative Services</h3>
-                <p>We create digital experiences,visual identitities, and content that help 
-                    businesses communicate and connect.</p>
-
-                    <a href="service.html"#creative-services class="service-button"
-                    >Learn More</a>
-         </div>
-
-    </article>
-
-            <article class="service-item">
-                <div class="service-image"> <img src="images/tech advisory.jpeg"
-                alt="Tech Advisory"></div>
-        <div class="service-number">05</div>
-           <div class="service-content">
-
-            <h3>Tech Advisory</h3>        
-                <p>We provide technology guidance that makes businesses make informed decisions
-                    and turn technology into business value.</p>
-
-                     <a href="pages/service.html"#tech-advisory class="service-button"
-                     >Learn More</a>
-            </div>
-
-            </article>
-
-             <article class="service-item">   
-                     <div class="service-image"> <img src="images/it support.jpeg" 
-                        alt="it support"></div>
-                     <div class="service-number">06</div>  
-
-             <div class="service-content">     
-            <h3>IT Support</h3>     
-                <p>We help businesses maintain reliable, secure, and effective technology 
-                    environments.</p>
-
-                    <a href="pages/service.html"it-support class="service-button"
-                    >Explore Our Services</a>
-             </div>
-                    
-             </article>
-
-     </section>
-
-     <section class="about">
-
-        <div class="about-container">
-
-        <div class="about-label">ABOUT NOIRCESS</div>
-            
-        <div class="about-content">
-            <div class="about-heading">
-
-    <h2>Technology that Moves<span>Business Forward.</span></h2>
     </div>
-          <div class="about-text">
-    <p>Noircess is a technology company focusing on building digital solutions that help
-        businesses operate better,solve comples problems, and create new opportunities.</p>   
+  </header>
 
-        <p>We combine software, technology, creativity and business thinking to turn ideas into
-            practical digital solutions.</p>
 
-            <a href="pages/about.html" class="about-button">Learn More About Noircess</a>
-            </div>
+  <main class="page-main">
 
-            <div class="about-points">
-                <article class="about-point">
-                   
-                    <span>01</span>
+    <!-- HERO -->
+    <section class="home-hero">
+      <div class="container--wide home-hero__inner">
 
-   <h3>Business-focused technology</h3>
-       <p>Technology built around real needs.</p>
-       </article>
-               
-       <article class="about-point">
-                       <span>02</span>
-   <h3>Practical and scalable solutions</h3>
-   <p>Solutions desgined to deliver value and grow withyour business.</p>
-                </article>
-    <article class="about-point">  
-        <span>03</span>       
-   <h3>Innovation driven approach</h3>
-      <p>Modern technology applied to meaningful challenges.</p>
-      </article>
+        <div class="home-hero__content">
+          <p class="eyebrow">TECHNOLOGY. INNOVATION. IMPACT.</p>
 
-<article class="about-point">
-     <span>04</span>
-   <h3>Client partnerships</h3>
-       <p>We build long lasting relationships, not just projects.</p>
-       </article>
+          <h1>
+            The future is built,
+            <span>not waited for.</span>
+          </h1>
+
+          <p class="home-hero__description">
+            We turn bold ideas into meaningful digital experiences
+            and technology solutions.
+          </p>
+
+          <div class="hero__actions">
+            <a href="./pages/services.html" class="btn btn--primary">
+              Explore Our Services
+            </a>
+
+             <a href="./pages/products.html" class="btn btn--primary">
+              View Our Products
+            </a>
+
+           
           </div>
 
+          <div class="home-hero__partners">
+            <p>Trusted by forward-thinking businesses</p>
+
+            <div class="partner-list">
+              <a href="products.html#zentro" class="partner-logo">
+                <span class="partner-symbol">Z</span> ZENTRO
+              </a>
+              <a href="products.html#fino" class="partner-logo">
+                <span class="partner-symbol">F</span> FINO
+              </a>
+              <a href="products.html#stoxa" class="partner-logo">
+                <span class="partner-symbol">S</span> STOXA
+              </a>
+              <a href="products.html#haulo" class="partner-logo">
+                <span class="partner-symbol">H</span> HAULO
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-hero__visual">
+          <div class="hero-orb hero-orb--one"></div>
+          <div class="hero-orb hero-orb--two"></div>
+
+       <div class="hero-building">
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85"
+              alt="Modern glass skyscraper reflecting blue light"
+              fetchpriority="high"
+            >
+            <div class="hero-building__overlay"></div>
           </div>
 
-     </section>
-     
-     
-    <section class="why-noircess">
-           <div class="why-noircess-container">
-               
-            <div class="why-noircess-intro">
+          <a href="services.html" class="hero-floating-card">
+            <span>
+              Building digital solutions for a smarter tomorrow.
+            </span>
+            <span class="floating-arrow" aria-hidden="true">↗</span>
+          </a>
 
-          <span class="why-noircess-label">WHY NOIRCESS</span>
-                  <div class="why-noircess-headinng">
+          <div class="hero-pagination" aria-hidden="true">
+            <span class="is-active">01</span>
+            <span class="pagination-dot"></span>
+            <span class="pagination-dot"></span>
+            <span>03</span>
+          </div>
 
-             <h2>Built Different.<span>Built For Impact</span> </h2>
+          <a href="#services" class="hero-scroll">
+            <span aria-hidden="true">↓</span>
+            <small>Scroll</small>
+          </a>
+        </div>
 
-             <p>We combine Technology creativity,and business thinking to deliver solutions
-                that create real value.</p>
+      </div>
+    </section>
 
-             </div>
-             
-        </div>     
 
-            <div class="why-noircess-points">
-  
-                <article class="why-noircess-point">
-                     <span>01</span>
-                    <h3>Business First</h3>
-                 <p>Technology that builds around your business needs.</p>
-                </article>
+    <!-- SERVICES -->
+    <section class="home-services page-section" id="services">
+      <div class="container--wide services-layout">
 
-                        <article class="why-noircess-point">
-                            <span>02</span>
-                                  <h3>Innovation</h3>
-                                <p>Smarter solutions powered by modern technology.</p>
-                        </article>
+        <div class="section-intro" data-reveal>
+          <p class="eyebrow">OUR SERVICES</p>
+          <h2>Solutions for what comes next.</h2>
+          <p>
+            From development to support, we provide end-to-end
+            technology and creative services to help your business grow.
+          </p>
+          <a href="services.html" class="btn btn--outline">
+            View All Services <span aria-hidden="true">→</span>
+          </a>
+        </div>
 
-                <article class="why-noircess-point">
-                    <span>03</span>
-                         <h3>Scalable</h3>
-                         <p>Solutions designed to grow with your business.</p>
-                </article>
+        <div class="service-grid reveal-stagger">
 
-                <article class="why-noircess-point">
-                     <span>04</span>
-                     <h3>Partnerships</h3>
-                     <p>We build long lasting relationships, not just projects.</p>
-            </article>
-
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+             <img src="./assets/icons/services/software.svg" alt="software">
             </div>
+            <h3>Software Development</h3>
+            <p>Web, mobile, enterprise and API solutions.</p>
+            <a href="service-details.html#software-development" class="text-link">
+              Learn More <span aria-hidden="true">→</span>
+            </a>
+          </article>
 
-           </div>      
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+            <img src="./assets/icons/services/digital.svg" alt="digital transformation">
+            </div>
+            <h3>Digital Transformation</h3>
+            <p>Automation, AI and smarter workflows.</p>
+            <a href="service-details.html#digital-transformation" class="text-link">
+              Learn More <span aria-hidden="true">→</span>
+            </a>
+          </article>
 
-    </section>
-    
-    <section class="approach">
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+           <img src="./assets/icons/services/creative.svg" alt="creative-services">
+            </div>
+            <h3>Creative Services</h3>
+            <p>Design, branding and digital experiences.</p>
+            <a href="service-details.html#creative-services" class="text-link">
+              Learn More <span aria-hidden="true">→</span>
+            </a>
+          </article>
 
-        <div class="approach-container">
-              <div class="approach-intro">
-             <span class="approach-label">HOW WE WORK</span>
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+              <img src="./assets/icons/services/support.svg" alt="it support">
+            </div>
+            <h3>IT Support</h3>
+            <p>Reliable support, maintenance and troubleshooting.</p>
+            <a href="service-details.html#it-support" class="text-link">
+              Learn More <span aria-hidden="true">→</span>
+            </a>
+          </article>
 
-                <div class="approach-heading">
-
-             <h2>From Idea <span>to impact</span></h2>
-                 <p>We follow a clear collaborative process that turns businness challenges
-                    and ideas into practical solutions.</p>
-
-                  </div>
-                  
-             </div>
-             
-             <div class="approach-steps">
-
-                    <article class="approach-step">
-                            
-                        <span class="approach-number">01</span>
-                              <h3>Discover</h3>
-                  <p>We understand your business goals,challenges and users before defining the 
-                    right solution </p>
-
-                    </article>
-
-                    <article class="approach-step">
-
-                        <span class="approach-number">02</span>
-                              <h3>Design</h3>
-
-                   <p>We develop the solution,concept, user experience, and technical direction
-                      around your needs.</p>
-
-                    </article>
-                    
-                    <article class="approach-step">
-
-                        <span class="approach-number">03</span>
-                              <h3>Build</h3>
-
-                    <p>We develop,test and refinne the solution ising the right technoligies
-                        and development practices.</p>
-                        
-                   </article>
-                   
-                   <article class="approach-step">
-
-                    <span class="approach-number">04</span>
-                          <h3>Deliver</h3>
-
-                   <p>We launch the solution and continue improving it to support your
-                    business as it grows.</p>
-
-                </article>
-                
-                </div>
-
-             </div>
-                
+        </div>
+      </div>
     </section>
 
-    <section class="cta">
-        <div class="cta-container">
-             <span class="cta-label">LET'S WORK TOGETHER</span>
-               
-             <h2>Ready to Build<span>What's Next</span></h2>
 
-             <p>Let's turn your idea into a digital solution</p>
+    <!-- PRODUCTS -->
+    <section class="home-products page-section" id="products">
+      <div class="container--wide products-layout">
 
-             <a href="pages/contact.html" class="cta-button">Start a project</a>
-
-             </div>
-    
-        </section>     
-
-<footer class="footer">
-
-    <div class="footer-container">
-         
-        <div class="footer-main">
-
-            <div class="footer-brand">
-
-                <h2>Noircess</h2>
-        
-
-        <p>Technology. Innovation. Impact</p>
-
+        <div class="section-intro" data-reveal>
+          <p class="eyebrow">OUR PRODUCTS</p>
+          <h2>Powering different industries. Together.</h2>
+          <p>
+            Explore our suite of platforms designed to solve real
+            business challenges.
+          </p>
+          <a href="products.html" class="btn btn--primary">
+            Explore All Products <span aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <p>©2026 Noircess.All Right Reserved</p>
+        <div class="product-grid">
 
-        <div class="footer-column">
+          <a href="product-details.html#haulo" class="product-card product-card--haulo" data-reveal>
+            <div class="product-card__top">
+              <span class="product-mark">H</span>
+                   <h3>HAULO</h3>
+              <p class="product-category">Mobility &amp; Logistics</p>
+              <p>Smarter movement. Greater efficiency.</p>
+              <span class="product-arrow" aria-hidden="true">↗</span>
+            </div>
+            <img
+              src="./assets/images/Haulo Mobility Logo on Black.png"
+              alt="Haulo Logo"
+              loading="lazy"
+            >
+          </a>
 
-            <h3>Connect</h3>
+          <a href="product-details.html#zentro" class="product-card product-card--zentro" data-reveal>
+            <div class="product-card__top">
+                 <span class="product-mark">Z</span>
+                    <h3>ZENTRO</h3>
+              <p class="product-category">E-commerce Platform</p>
+              <p>Turn your business online.</p>
+              <span class="product-arrow" aria-hidden="true">↗</span>
+            </div>
+            <img
+              src="./assets/images/zentro.jpeg"
+              alt="Online commerce and digital payments"
+              loading="lazy"
+            >
+          </a>
 
-        <a href="mailto:noircess@gmail.com">
-                <i class="fa-solid fa-envelope"></i>
-                 <span>Email</span> </a>
-           <a href="tel:+254718724111">
-               <i class="fa-solid fa-phone"></i>
-                  <span>Phone</span></a>
-           <a href="https://www.instagram.com/noircess.ke" target="_blank" 
-           rel="noopener noreferrer">
-           <i class="fa-brands fa-instagram"></i>
-        <span>Instagram</span></a>
+          <a href="product-details.html#fino" class="product-card product-card--fino" data-reveal>
+            <div class="product-card__top">
+              <span class="product-mark">F</span>
+              <h3>FINO</h3>
+              <p class="product-category">Fintech Platform</p>
+              <p>Smarter financial solutions.</p>
+              <span class="product-arrow" aria-hidden="true">↗</span>
+            </div>
+            <img
+              src="./assets/images/fino.jpeg"
+              alt="Financial Platform"
+              loading="lazy"
+            >
+          </a>
 
-           <a href="https://wa.me/25471872411" target="_blank" 
-           rel="noopener noreferrer"> <i class="fa-brands fa-whatsapp"></i>
-        <span>Whatsapp</span></a>
-
-           </div>
-
-           </div>
-
-           <div class="footer-bottom">
-             <p>© 2026 Noircess. All rights reserved.</p>
-                <div class="footer-legal">
-
-        <a href="pages/privacy policy.html">Privacy Policy</a>
-
-        <a href="pages/terms of service.html">Terms Of Service</a>
+          <a href="product-details.html#stoxa" class="product-card product-card--stoxa" data-reveal>
+            <div class="product-card__top">
+              <span class="product-mark">S</span>
+              <h3>STOXA</h3>
+              <p class="product-category">Enterprise Software</p>
+              <p>Streamline operations. Drive growth.</p>
+              <span class="product-arrow" aria-hidden="true">↗</span>
+            </div>
+            <img
+              src="./assets/images/stoxa.jpeg"
+              alt="Enteprise Platform"
+              loading="lazy"
+            >
+          </a>
 
         </div>
+      </div>
+    </section>
 
+
+    <!-- ABOUT -->
+    <section class="home-about page-section" id="about">
+      <div class="container--wide about-layout">
+
+        <a href="about.html#our-story" class="about-visual image-zoom" aria-label="Discover the NOIRCESS story">
+          <img
+            src="./assets/images/about-workspace.jpeg"
+            alt="Modern collaborative workspace"
+            loading="lazy"
+          >
+          <span class="about-visual__label">
+            Innovation<br>People<br>Impact
+          </span>
+          <span class="about-play" aria-hidden="true">▶</span>
+        </a>
+
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow">ABOUT NOIRCESS</p>
+          <h2>Technology with purpose.</h2>
+          <p>
+            We are a technology brand focused on building innovative
+            digital solutions for businesses, helping them grow,
+            operate smarter and create lasting impact.
+          </p>
+          <a href="about.html" class="btn btn--outline">
+            Learn More <span aria-hidden="true">→</span>
+          </a>
         </div>
 
+        <div class="about-stats">
+          <div class="stat-item">
+            <strong>01</strong>
+            <span>Vision</span>
+          </div>
+          <div class="stat-item">
+            <strong>04</strong>
+            <span>Core Service Areas</span>
+          </div>
+          <div class="stat-item">
+            <strong>04</strong>
+            <span>Featured Platforms</span>
+          </div>
         </div>
 
-</footer>       
-             </body>
-             
-             </html>
+      </div>
+    </section>
+
+
+    <!-- FEATURED PROJECTS -->
+    <section class="home-projects page-section" id="projects">
+      <div class="container--wide">
+
+        <div class="projects-heading" data-reveal>
+          <div>
+            <p class="eyebrow">FEATURED PROJECTS</p>
+            <h2>Ideas brought to life.</h2>
+            <p>A selection of digital platforms and experiences.</p>
+          </div>
+          <a href="projects.html" class="text-link">
+            View All Projects <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="project-grid">
+
+          <a href="project-details.html#enterprise-software" class="project-card" data-reveal>
+            <div class="project-card__image">
+              <img
+                src="./assets/images/stoxa.jpeg"
+                alt="Enterprise analytics interface"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-card__info">
+              <div>
+                <span>STOXA</span>
+                <h3>Enterprise Software</h3>
+              </div>
+              <span class="project-link-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="project-details.html#clothing-brand" class="project-card" data-reveal>
+            <div class="project-card__image">
+              <img
+                src="./assets/images/syvon.svg"
+                alt="Digital business interface"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-card__info">
+              <div>
+                <span>SYVON</span>
+                <h3>Ecommerce & Portfolio Website</h3>
+              </div>
+              <span class="project-link-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="project-details.html#ecommerce" class="project-card" data-reveal>
+            <div class="project-card__image">
+              <img
+                src="./assets/images/zentro.jpeg"
+                alt="E-commerce and payment experience"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-card__info">
+              <div>
+                <span>ZENTRO</span>
+                <h3>E-commerce Platform</h3>
+              </div>
+              <span class="project-link-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="home-cta-section">
+      <div class="container--wide">
+        <div class="home-cta">
+
+          <div class="home-cta__content">
+            <p class="eyebrow">LET'S BUILD TOGETHER</p>
+            <h2>Have an idea worth building?</h2>
+            <p>Get in touch with our team and let's turn your vision into reality.</p>
+            <a href="contact.html" class="btn btn--primary">
+              Start a Conversation <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="home-cta__benefits">
+            <div class="cta-benefit">
+              <span class="cta-benefit__icon" aria-hidden="true">◷</span>
+              <div>
+                <strong>Fast Response</strong>
+                <p>Clear and timely communication.</p>
+              </div>
+            </div>
+            <div class="cta-benefit">
+              <span class="cta-benefit__icon" aria-hidden="true">◎</span>
+              <div>
+                <strong>Expert Team</strong>
+                <p>Thoughtful, skilled execution.</p>
+              </div>
+            </div>
+            <div class="cta-benefit">
+              <span class="cta-benefit__icon" aria-hidden="true">✳</span>
+              <div>
+                <strong>Tailored Solutions</strong>
+                <p>Built around your goals.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container--wide footer-inner">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <a href="index.html" class="header-logo">
+        NOIRCESS<span class="brand-dot">.</span>
+      </a>
+
+      <p class="footer-tagline">
+        Technology. Innovation. Impact.
+      </p>
+    </div>
+
+    <!-- Page links -->
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="./index.html">Home</a>
+      <a href="./pages/about.html">About</a>
+      <a href="./pages/services.html">Services</a>
+      <a href="./pages/products.html">Products</a>
+      <a href="./pages/project.html">Projects</a>
+      <a href="./pages/Team.html">Team</a>
+      <a href="./pages/pricing.html">Pricing</a>
+      <a href="./pages/contact.html">Contact</a>
+    </nav>
+
+<!-- Contact and social icons -->
+<div class="footer-socials" aria-label="Contact and social links">
+
+  <a
+    href="https://instagram.com/YOUR_USERNAME"
+    class="footer-social-link"
+    aria-label="Instagram"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src="./assets/icons/contacts/instagram.svg"
+      alt=""
+    >
+  </a>
+
+  <a
+    href="mailto:YOUR_EMAIL@example.com"
+    class="footer-social-link"
+    aria-label="Email NOIRCESS"
+  >
+    <img
+      src="./assets/icons/contacts/email.svg"
+      alt=""
+    >
+  </a>
+
+  <a
+    href="https://wa.me/YOUR_NUMBER"
+    class="footer-social-link"
+    aria-label="WhatsApp NOIRCESS"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src="./assets/icons/contacts/whatsapp.svg"
+      alt=""
+    >
+  </a>
+
+</div>
+
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <span>
+        © <span id="current-year">2026</span>
+        NOIRCESS. All rights reserved.
+      </span>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

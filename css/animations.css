@@ -1,0 +1,393 @@
+
+/* ========================================
+   NOIRCESS — ANIMATION SYSTEM
+   File: animations.css
+======================================== */
+
+/* ----------------------------------------
+   1. Animation Variables
+---------------------------------------- */
+
+:root {
+  --animation-fast: 180ms;
+  --animation-normal: 300ms;
+  --animation-smooth: 600ms;
+  --animation-slow: 900ms;
+
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --blue-glow:
+    0 0 18px rgba(8, 102, 255, 0.18),
+    0 0 40px rgba(8, 102, 255, 0.08);
+}
+
+/* ----------------------------------------
+   2. Global Smooth Scrolling
+---------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  animation: page-enter 500ms var(--ease-standard) both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------
+   3. Scroll Reveal Animations
+---------------------------------------- */
+
+/* Elements begin hidden only when JS enables reveal mode. */
+
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms var(--ease-cinematic),
+    transform 700ms var(--ease-cinematic);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js-reveal [data-reveal="left"] {
+  transform: translateX(-32px);
+}
+
+.js-reveal [data-reveal="right"] {
+  transform: translateX(32px);
+}
+
+.js-reveal [data-reveal="scale"] {
+  transform: scale(0.96);
+}
+
+.js-reveal [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Optional stagger for grouped content */
+
+.reveal-stagger > :nth-child(1) {
+  --reveal-delay: 0ms;
+}
+
+.reveal-stagger > :nth-child(2) {
+  --reveal-delay: 100ms;
+}
+
+.reveal-stagger > :nth-child(3) {
+  --reveal-delay: 200ms;
+}
+
+.reveal-stagger > :nth-child(4) {
+  --reveal-delay: 300ms;
+}
+
+.reveal-stagger > :nth-child(5) {
+  --reveal-delay: 400ms;
+}
+
+.reveal-stagger > :nth-child(6) {
+  --reveal-delay: 500ms;
+}
+
+/* ----------------------------------------
+   4. Cinematic Hero Animations
+---------------------------------------- */
+
+.hero__content > * {
+  animation: hero-rise 850ms var(--ease-cinematic) both;
+}
+
+.hero__content > :nth-child(1) {
+  animation-delay: 100ms;
+}
+
+.hero__content > :nth-child(2) {
+  animation-delay: 220ms;
+}
+
+.hero__content > :nth-child(3) {
+  animation-delay: 340ms;
+}
+
+.hero__content > :nth-child(4) {
+  animation-delay: 460ms;
+}
+
+.hero__visual {
+  animation: hero-visual-enter 1100ms var(--ease-cinematic) both;
+  animation-delay: 180ms;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-visual-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ----------------------------------------
+   5. Blue Glow Effects
+---------------------------------------- */
+
+.blue-glow {
+  box-shadow: var(--blue-glow);
+  transition:
+    box-shadow var(--animation-normal) var(--ease-standard),
+    transform var(--animation-normal) var(--ease-standard);
+}
+
+.blue-glow:hover {
+  box-shadow:
+    0 0 24px rgba(8, 102, 255, 0.25),
+    0 0 60px rgba(8, 102, 255, 0.12);
+}
+
+.glow-text {
+  text-shadow: 0 0 24px rgba(8, 102, 255, 0.2);
+}
+
+.glow-orb {
+  position: absolute;
+  width: 280px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(8, 102, 255, 0.12);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: orb-breathe 6s ease-in-out infinite;
+}
+
+@keyframes orb-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+/* ----------------------------------------
+   6. Buttons and Links
+---------------------------------------- */
+
+.btn,
+.header-cta {
+  transition:
+    color var(--animation-normal) var(--ease-standard),
+    background-color var(--animation-normal) var(--ease-standard),
+    border-color var(--animation-normal) var(--ease-standard),
+    box-shadow var(--animation-normal) var(--ease-standard),
+    transform var(--animation-normal) var(--ease-standard);
+}
+
+.btn:hover,
+.header-cta:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active,
+.header-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.header-nav__link {
+  transition:
+    color var(--animation-fast) ease,
+    background-color var(--animation-fast) ease;
+}
+
+.footer-social-link {
+  transition:
+    color var(--animation-normal) ease,
+    background-color var(--animation-normal) ease,
+    border-color var(--animation-normal) ease,
+    transform var(--animation-normal) var(--ease-standard);
+}
+
+.footer-social-link:hover {
+  transform: translateY(-3px);
+}
+
+/* ----------------------------------------
+   7. Card Hover Effects
+---------------------------------------- */
+
+.service-card,
+.product-card,
+.project-card,
+.team-card {
+  transition:
+    transform 350ms var(--ease-standard),
+    box-shadow 350ms var(--ease-standard),
+    border-color 350ms var(--ease-standard);
+}
+
+.service-card:hover,
+.product-card:hover,
+.project-card:hover,
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(8, 13, 24, 0.08);
+  border-color: rgba(8, 102, 255, 0.3);
+}
+
+/* Optional image zoom */
+
+.image-zoom {
+  overflow: hidden;
+}
+
+.image-zoom img {
+  transition: transform 700ms var(--ease-cinematic);
+}
+
+.image-zoom:hover img {
+  transform: scale(1.045);
+}
+
+/* ----------------------------------------
+   8. Header and Mobile Menu
+---------------------------------------- */
+
+.site-header {
+  transition:
+    background-color var(--animation-normal) ease,
+    box-shadow var(--animation-normal) ease;
+}
+
+.header-menu-toggle span {
+  transition:
+    transform var(--animation-normal) var(--ease-standard),
+    opacity var(--animation-fast) ease;
+}
+
+.header-nav.is-open {
+  animation: menu-enter 250ms var(--ease-cinematic) both;
+}
+
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----------------------------------------
+   9. Section Dividers and Accent Lines
+---------------------------------------- */
+
+.accent-line {
+  width: 56px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--color-blue);
+  transform-origin: left;
+}
+
+.js-reveal [data-reveal].is-visible .accent-line {
+  animation: line-expand 650ms var(--ease-cinematic) both;
+}
+
+@keyframes line-expand {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ----------------------------------------
+   10. Loading and Feedback
+---------------------------------------- */
+
+.pulse {
+  animation: soft-pulse 2s ease-in-out infinite;
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.65;
+  }
+}
+
+.spin {
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------------------
+   11. Accessibility
+---------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+

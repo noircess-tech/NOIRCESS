@@ -1,0 +1,304 @@
+
+/* ==========================================================
+   NOIRCESS — GLOBAL DESIGN SYSTEM
+   Brand: Technology. Innovation. Impact.
+   Reference: Approved NOIRCESS homepage design
+   ========================================================== */
+
+
+/* 1. BRAND COLORS
+   ---------------------------------------------------------- */
+
+:root {
+  /* Primary brand palette */
+  --color-black: #080D18;
+  --color-black-soft: #111827;
+  --color-white: #FFFFFF;
+
+  --color-blue: #0866FF;
+  --color-blue-hover: #0052D9;
+  --color-blue-dark: #0647C7;
+  --color-blue-light: #EAF2FF;
+  --color-blue-pale: #F4F8FF;
+
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F9FC;
+  --bg-blue-soft: #F1F6FF;
+  --bg-dark: #080D18;
+
+  /* Text */
+  --text-primary: #101828;
+  --text-secondary: #5D6B82;
+  --text-muted: #8995A8;
+  --text-inverse: #FFFFFF;
+  --text-link: #0866FF;
+
+  /* Borders */
+  --border-color: #E5EAF2;
+  --border-color-strong: #D4DCE8;
+  --border-blue: rgba(8, 102, 255, 0.25);
+
+  /* Effects */
+  --blue-glow: rgba(8, 102, 255, 0.18);
+  --blue-glow-strong: rgba(8, 102, 255, 0.32);
+
+  /* Feedback */
+  --color-success: #16865C;
+  --color-error: #D92D45;
+  --color-warning: #B7791F;
+}
+
+
+/* 2. TYPOGRAPHY
+   ---------------------------------------------------------- */
+
+:root {
+  --font-primary: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-heading: "Inter", "Segoe UI", Arial, sans-serif;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* Responsive heading scale */
+  --heading-hero: clamp(2.8rem, 5.5vw, 5rem);
+  --heading-1: clamp(2.3rem, 4.5vw, 3.8rem);
+  --heading-2: clamp(1.9rem, 3.5vw, 2.8rem);
+  --heading-3: clamp(1.4rem, 2.4vw, 1.9rem);
+  --heading-4: clamp(1.15rem, 1.8vw, 1.4rem);
+
+  --line-height-tight: 1.08;
+  --line-height-heading: 1.2;
+  --line-height-body: 1.7;
+
+  --letter-spacing-tight: -0.045em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.1em;
+}
+
+
+/* 3. SPACING SYSTEM
+   ---------------------------------------------------------- */
+
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --section-padding: clamp(4rem, 7vw, 6.5rem);
+  --section-padding-small: clamp(2.5rem, 4vw, 4rem);
+
+  --content-width: 1240px;
+  --content-width-wide: 1440px;
+  --content-width-narrow: 760px;
+
+  --page-gutter: clamp(1.25rem, 5vw, 4.5rem);
+}
+
+
+/* 4. BORDER RADIUS
+   ---------------------------------------------------------- */
+
+:root {
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 30px;
+  --radius-pill: 999px;
+}
+
+
+/* 5. SHADOWS
+   ---------------------------------------------------------- */
+
+:root {
+  --shadow-subtle:
+    0 2px 10px rgba(16, 24, 40, 0.035);
+
+  --shadow-card:
+    0 6px 24px rgba(16, 24, 40, 0.045);
+
+  --shadow-card-hover:
+    0 14px 36px rgba(16, 24, 40, 0.09);
+
+  --shadow-blue:
+    0 6px 18px rgba(8, 102, 255, 0.2);
+
+  --shadow-blue-hover:
+    0 10px 28px rgba(8, 102, 255, 0.3);
+
+  --shadow-focus:
+    0 0 0 4px rgba(8, 102, 255, 0.13);
+}
+
+
+/* 6. TRANSITIONS
+   ---------------------------------------------------------- */
+
+:root {
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --transition-fast: 160ms ease;
+  --transition-normal: 280ms var(--ease-standard);
+  --transition-smooth: 500ms var(--ease-smooth);
+}
+
+
+/* 7. GLOBAL RESET
+   ---------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: var(--line-height-body);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  padding-left: 1.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--heading-1);
+}
+
+h2 {
+  font-size: var(--heading-2);
+}
+
+h3 {
+  font-size: var(--heading-3);
+}
+
+h4 {
+  font-size: var(--heading-4);
+}
+
+::selection {
+  color: var(--color-white);
+  background: var(--color-blue);
+}
+
+
+/* 8. ACCESSIBILITY
+   ---------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

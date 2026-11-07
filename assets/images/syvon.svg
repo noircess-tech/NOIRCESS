@@ -1,0 +1,15 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <rect width="1200" height="600" fill="#fff"/>
+  <g fill="#000">
+    <text x="600" y="320"
+      text-anchor="middle"
+      font-family="Bodoni MT, Didot, Times New Roman, serif"
+      font-size="150"
+      font-weight="400"
+      letter-spacing="18">SYVON</text>
+    <path d="M410 374 H790"
+      stroke="#000" stroke-width="2"/>
+    <path d="M600 365 L609 374 L600 383 L591 374 Z"/>
+  </g>
+</svg>

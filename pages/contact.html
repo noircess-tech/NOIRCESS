@@ -4,253 +4,624 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="description"
+        content="Get in touch with NOIRCESS. Discuss your next software development, digital transformation, creative or technology project.">
 
-    <title>Contact Us | Noircess</title>
+    <title>Contact Us | NOIRCESS</title>
 
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-
-    <!-- Contact Page CSS -->
-    <link rel="stylesheet" href="../css/contact.css">
-    <link rel="stylesheet" href=
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <script src="../js/script.js" defer></script>
-
-    <script>
-    window.formspree =
-        window.formspree ||
-        function () {
-            (formspree.q = formspree.q || []).push(arguments);
-        };
-
-    formspree('initForm', {
-        formElement: '#contact-form',
-        formId: 'mqpagyql'
-    });
-</script>
-
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/components.css">
 </head>
 
 <body>
 
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner container--wide">
+
+      <a class="header-logo" href="../index.html" aria-label="NOIRCESS home">
+        NOIRCESS<span class="brand-dot">.</span>
+      </a>
+
+      <nav class="header-nav" id="main-navigation" aria-label="Main navigation">
+        <a href="../index.html" class="header-nav__link active" aria-current="page">Home</a>
+        <a href="./about.html" class="header-nav__link">About</a>
+        <a href="./services.html" class="header-nav__link">Services</a>
+        <a href="./products.html" class="header-nav__link">Products</a>
+        <a href="./project.html" class="header-nav__link">Projects</a>
+                <a href="./Team.html" class="header-nav__link">Team</a>
+        <a href="./pricing.html" class="header-nav__link">Pricing</a>
+        <a href="./contact.html" class="header-nav__link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-search" href="search.html" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.5"></circle>
+            <path d="m16 16 4.2 4.2"></path>
+          </svg>
+        </a>
+
+        <a href="./contact.html" class="btn btn--primary header-cta">
+          Get in Touch <span aria-hidden="true">↗</span>
+        </a>
+
+        <button
+          class="header-menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-controls="main-navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+<main class="contact-page">
+
     <!-- =====================================================
-         HEADER
+         SECTION 01: CONTACT HERO
     ====================================================== -->
 
-    <header class="header">
+    <section class="contact-hero" id="contact-hero">
 
-        <div class="header-container">
+        <div class="contact-container">
 
-            <a href="../index.html" class="brand">
+            <div class="contact-hero-grid">
 
-                <img
-                    src="../images/noircess-logo.jpeg"
-                    alt="Noircess Logo"
-                    class="logo"
-                >
+                <div class="contact-hero-content">
 
-                <span class="brand-name">
-                    Noircess
-                </span>
+                    <span class="section-eyebrow">
+                        GET IN TOUCH
+                    </span>
 
-            </a>
+                    <h1>
+                        Let's build
+                        something
+                        <span>meaningful.</span>
+                    </h1>
+
+                    <p>
+                        Have an idea, a challenge or a project in mind?
+                        We're ready to listen, collaborate and help you
+                        turn your vision into meaningful digital solutions.
+                    </p>
+
+                    <div class="contact-hero-actions">
+
+                        <a href="#contact-form"
+                           class="contact-btn contact-btn-primary">
+
+                            Start a Conversation
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+
+                        </a>
+
+                        <a href="#contact-information"
+                           class="contact-btn contact-btn-outline">
+
+                            Explore Contact Options
+
+                        </a>
+
+                    </div>
+
+                    <div class="contact-hero-trust">
+
+                        <span class="trust-indicator"></span>
+
+                        <span>
+                            Technology. Innovation. Impact.
+                        </span>
+
+                    </div>
+
+                </div>
 
 
-            <nav class=" nav nav-link nav-menu">
+                <div class="contact-hero-visual">
 
-                <a href="../index.html">
-                    Home
-                </a>
+                    <!-- AI-GENERATED IMAGE PLACEHOLDER
+                         Description:
+                         Premium modern technology company reception,
+                         glass architecture, professional workspace,
+                         subtle electric-blue lighting and NOIRCESS
+                         corporate identity.
+                    -->
 
-                <a href="../pages/about.html">
-                    About
-                </a>
+                    <div class="contact-hero-image-placeholder"
+                         id="contact-hero-image">
 
-                <a href="../pages/service.html">
-                    Services
-                </a>
+                        <img
+                            src="assets/images/contact/contact-hero.webp"
+                            alt="Modern NOIRCESS technology workspace"
+                            loading="eager"
+                        >
 
-                <a href="../pages/solutions.html">Solutions</a>
+                        <div class="hero-visual-overlay">
 
-                <a
-                    href="../pages/contact.html"
-                    class="active"
-                >
-                    Contact
-                </a>
+                            <span class="hero-visual-label">
+                                NOIRCESS
+                            </span>
 
-            </nav>
+                            <h2>
+                                Every great solution
+                                starts with a conversation.
+                            </h2>
+
+                        </div>
+
+                    </div>
 
 
-            <a
-                href="../pages/contact.html"
-                class="header-button" class="start-project"
-            >
-                Start a Project
-            </a>
-            
-        <button class="menu-toggle" aria-label="Open Navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        
-        </button>
+                    <div class="hero-floating-card">
+
+                        <div class="floating-card-icon">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                                19.79 19.79 0 0 1-8.63-3.07
+                                19.5 19.5 0 0 1-6-6
+                                19.79 19.79 0 0 1-3.07-8.67
+                                A2 2 0 0 1 4.11 2h3
+                                a2 2 0 0 1 2 1.72
+                                c.12.96.36 1.9.72 2.79
+                                a2 2 0 0 1-.45 2.11L8.11 9.89
+                                a16 16 0 0 0 6 6l1.27-1.27
+                                a2 2 0 0 1 2.11-.45
+                                c.89.36 1.83.6 2.79.72
+                                A2 2 0 0 1 22 16.92z"/>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+                            <strong>Let's Talk</strong>
+
+                            <span>
+                                Your next opportunity
+                                could start here.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-    </header>
+    </section>
 
 
 
     <!-- =====================================================
-         MAIN
+         SECTION 02: CONTACT INFORMATION
     ====================================================== -->
 
-    <main>
+    <section class="contact-information"
+             id="contact-information">
 
+        <div class="contact-container">
 
-        <!-- =================================================
-             CONTACT HERO
-        ================================================== -->
+            <div class="contact-section-heading">
 
-        <section class="contact-hero">
-
-            <div class="hero-container">
-
-                <span class="eyebrow">
-                    GET IN TOUCH
+                <span class="section-eyebrow">
+                    CONTACT INFORMATION
                 </span>
 
-
-                <h1>
-                    Let's build something
-                    <span>meaningful</span>
-                </h1>
-
+                <h2>
+                    We'd love to
+                    <span>hear from you.</span>
+                </h2>
 
                 <p>
-                    Have an idea, a challenge, or a project in mind?
-                    Tell us what you're working on and let's explore
-                    how Noircess can help bring it to life.
+                    Choose the most convenient way to reach our team.
+                    We're available to discuss projects, partnerships,
+                    business enquiries and general questions.
                 </p>
 
             </div>
 
-        </section>
+
+            <div class="contact-information-grid">
+
+
+                <!-- EMAIL CARD -->
+
+                <article class="contact-info-card">
+
+                    <div class="contact-info-icon">
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8">
+
+                            <rect x="3" y="5"
+                                  width="18" height="14"
+                                  rx="2"/>
+
+                            <path d="m3 7 9 6 9-6"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="contact-info-content">
+
+                        <span class="contact-card-label">
+                            EMAIL
+                        </span>
+
+                        <h3>Email Us</h3>
+
+                        <p>
+                            Send us your enquiries and
+                            project requirements.
+                        </p>
+
+                        <a href="mailto:noircess@gmail.com">
+
+                            noircess@gmail.com
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M7 17 17 7M7 7h10v10"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </article>
 
 
 
-        <!-- =================================================
-             CONTACT INFORMATION + FORM
-        ================================================== -->
+                <!-- PHONE CARD -->
 
-        <section class="contact-section">
+                <article class="contact-info-card">
 
-            <div class="container contact-grid">
+                    <div class="contact-info-icon">
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8">
+
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18
+                            2 19.79 19.79 0 0 1-8.63-3.07
+                            19.5 19.5 0 0 1-6-6
+                            19.79 19.79 0 0 1-3.07-8.67
+                            A2 2 0 0 1 4.11 2h3
+                            a2 2 0 0 1 2 1.72
+                            c.12.96.36 1.9.72 2.79
+                            a2 2 0 0 1-.45 2.11L8.11 9.89
+                            a16 16 0 0 0 6 6l1.27-1.27
+                            a2 2 0 0 1 2.11-.45
+                            c.89.36 1.83.6 2.79.72
+                            A2 2 0 0 1 22 16.92z"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="contact-info-content">
+
+                        <span class="contact-card-label">
+                            PHONE
+                        </span>
+
+                        <h3>Call Us</h3>
+
+                        <p>
+                            Speak directly with our
+                            team about your requirements.
+                        </p>
+
+                        <a href="tel:+254718724111">
+
+                            +254 718 724 111
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M7 17 17 7M7 7h10v10"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </article>
 
 
-                <!-- =============================================
-                     CONTACT INFORMATION
-                ============================================== -->
 
-                <div class="contact-info">
+                <!-- WHATSAPP CARD -->
 
-                    <span class="section-label">
-                        CONTACT
+                <article class="contact-info-card">
+
+                    <div class="contact-info-icon">
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8">
+
+                            <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8
+                            8.5 8.5 0 0 1-7.6 4.7
+                            8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7
+                            a8.4 8.4 0 0 1-.9-3.8
+                            8.5 8.5 0 0 1 4.7-7.6
+                            8.4 8.4 0 0 1 3.8-.9h.5
+                            a8.5 8.5 0 0 1 8 8z"/>
+
+                            <path d="M9 9c.3-.5.5-.5.8-.5h.5
+                            c.2 0 .4.1.5.4l.8 1.8
+                            c.1.2.1.4-.1.6l-.6.7
+                            c-.2.2-.2.4 0 .6
+                            a6 6 0 0 0 2.8 2.8
+                            c.2.1.4.1.6-.1l.7-.8
+                            c.2-.2.4-.2.6-.1l1.8.8
+                            c.3.1.4.3.4.5
+                            0 .3-.1.8-.5 1.1"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="contact-info-content">
+
+                        <span class="contact-card-label">
+                            WHATSAPP
+                        </span>
+
+                        <h3>Chat With Us</h3>
+
+                        <p>
+                            Start a direct conversation
+                            with our team.
+                        </p>
+
+                        <a href="https://wa.me/254718724111"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            Message Us
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M7 17 17 7M7 7h10v10"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- LOCATION CARD -->
+
+                <article class="contact-info-card">
+
+                    <div class="contact-info-icon">
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8">
+
+                            <path d="M20 10c0 5-8 12-8 12
+                            S4 15 4 10a8 8 0 1 1 16 0z"/>
+
+                            <circle cx="12" cy="10"
+                                    r="2.5"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="contact-info-content">
+
+                        <span class="contact-card-label">
+                            LOCATION
+                        </span>
+
+                        <h3>Find Us</h3>
+
+                        <p>
+                            Connect with NOIRCESS
+                            in Nairobi, Kenya.
+                        </p>
+
+                        <a href="#contact-location">
+
+                            Nairobi, Kenya
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M7 17 17 7M7 7h10v10"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECTION 03: SEND AN ENQUIRY
+    ====================================================== -->
+
+    <section class="contact-form-section"
+             id="contact-form">
+
+        <div class="contact-container">
+
+            <div class="contact-form-layout">
+
+
+                <!-- LEFT INTRODUCTION -->
+
+                <div class="contact-form-intro">
+
+                    <span class="section-eyebrow">
+                        LET'S WORK TOGETHER
                     </span>
 
-
                     <h2>
-                        Let's talk about
-                        <span>your project</span>
+                        Tell us about
+                        <span>your project.</span>
                     </h2>
 
-
                     <p>
-                        Whether you're looking to build software,
-                        create a digital experience, transform your
-                        business, or explore an AI solution, we're
-                        ready to hear from you.
+                        Whether you're looking for a digital solution,
+                        creative services, technology consulting or
+                        technical support, we'd like to understand
+                        what you're trying to achieve.
                     </p>
 
 
-                    <!-- CONTACT DETAILS -->
-
-                    <div class="contact-details">
+                    <div class="form-benefits">
 
 
-                        <!-- EMAIL -->
+                        <div class="form-benefit">
 
-                        <div class="contact-item">
+                            <div class="benefit-icon">
 
-                            <div class="icon">
-                                <i class="fas fa-envelope"></i>
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8">
+
+                                    <circle cx="12" cy="12" r="9"/>
+
+                                    <path d="M12 7v5l3 2"/>
+
+                                </svg>
+
                             </div>
 
                             <div>
 
-                                <h3>
-                                    Email
-                                </h3>
+                                <strong>Clear Communication</strong>
 
-                                <a href="mailto:noircess@gmail.com">
-                                    noircess@gmail.com
-                                </a>
+                                <p>
+                                    We take time to understand
+                                    your requirements.
+                                </p>
 
                             </div>
 
                         </div>
 
 
-                        <!-- PHONE -->
+                        <div class="form-benefit">
 
-                        <div class="contact-item">
+                            <div class="benefit-icon">
 
-                            <div class="icon">
-                                <i class="fas fa-phone"></i>
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8">
+
+                                    <path d="m12 3 2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5L12 3z"/>
+
+                                    <path d="m19 14 1.2 2.8L23 18l-2.8 1.2L19 22l-1.2-2.8L15 18l2.8-1.2L19 14z"/>
+
+                                </svg>
+
                             </div>
 
                             <div>
 
-                                <h3>
-                                    Phone
-                                </h3>
+                                <strong>Tailored Solutions</strong>
 
-                                <a href="tel:+254718724111">
-                                    +254 718 724 111
-                                </a>
+                                <p>
+                                    Every project is approached
+                                    according to its needs.
+                                </p>
 
                             </div>
 
                         </div>
 
 
-                        <!-- WHATSAPP -->
+                        <div class="form-benefit">
 
-                        <div class="contact-item">
+                            <div class="benefit-icon">
 
-                            <div class="icon">
-                                <i class="fab fa-whatsapp"></i>
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8">
+
+                                    <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+
+                                    <path d="m9 12 2 2 4-4"/>
+
+                                </svg>
+
                             </div>
 
                             <div>
 
-                                <h3>
-                                    WhatsApp
-                                </h3>
+                                <strong>Professional Delivery</strong>
 
-                                <a
-                                    href="https://wa.me/254718724111"
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    Chat with us
-                                </a>
+                                <p>
+                                    We focus on practical,
+                                    sustainable digital solutions.
+                                </p>
 
                             </div>
 
@@ -258,320 +629,513 @@
 
                     </div>
 
-
-
-                <!-- =============================================
-                     CONTACT FORM
-                ============================================== -->
-
-                
-                <span class="section-label">WHAT CAN WE HELP WITH</span>
-                <div class="form-wrapper">
-
-                    <form
-                        class="contact-form"
-                        action="https://formspree.io/f/mqpagyql"
-                        method="post"
-                        id="contact-form"
-                    >
-
-
-                        <!-- NAME + EMAIL -->
-
-                        <div class="form-row">
-
-                            <div class="form-group">
-
-                                <label for="name">
-                                    Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Your name"
-                                    autocomplete="name"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="email">
-                                    Email
-                                </label>
-
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="you@example.com"
-                                    autocomplete="email"
-                                    required
-                                >
-
-                            </div>
-
-                        </div>
+                </div>
 
 
 
-                        <!-- COMPANY + SERVICE -->
+                <!-- RIGHT CONTACT FORM -->
 
-                        <div class="form-row">
+                <div class="contact-form-wrapper">
 
-                            <div class="form-group">
+                    <div class="contact-form-heading">
 
-                                <label for="company">
-                                    Company
-                                </label>
+                        <h3>Send Us a Message</h3>
 
-                                <input
-                                    type="text"
-                                    id="company"
-                                    name="company"
-                                    placeholder="Your company"
-                                    autocomplete="organization"
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="service">
-                                    Service
-                                </label>
-
-                                <select
-                                    id="service"
-                                    name="service"
-                                    required
-                                >
-
-                                    <option
-                                        value=""
-                                        selected
-                                        disabled
-                                    >
-                                        Select a service
-                                    </option>
-
-                                    <option value="software-development">
-                                        Software Development
-                                    </option>
-
-                                    <option value="creative-services">
-                                        Creative Services
-                                    </option>
-
-                                    <option value="digital-transformation">
-                                        Digital Transformation
-                                    </option>
-
-                                    <option value="ai">
-                                        AI
-                                    </option>
-
-                                    <option value="it-consultancy">
-                                        IT Consultancy
-                                    </option>
-
-                                    <option value="it-consultancy">
-                                        IT Support
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- MESSAGE -->
-
-                        <div class="form-group">
-
-                            <label for="message">
-                                Tell us about your project
-                            </label>
-
-                            <textarea
-                                id="message"
-                                name="message"
-                                placeholder="Tell us about your idea, project, or challenge..."
-                                required
-                            ></textarea>
-
-                        </div>
-
-
-
-                        <!-- SUBMIT -->
-
-                        <button
-                            type="submit"
-                            class="submit-button"
-                        >
-
-                            Send Message
-
-                            <span>
-                                →
-                            </span>
-
-                        </button>
-
-
-                        <p class="form-note" id="form-success">
-                            We'll get back to you as soon as possible.
+                        <p>
+                            Complete the form below and tell us
+                            how we can assist you.
                         </p>
 
-                    </form>
+                    </div>
 
+
+                   
+<form class="contact-form" method="POST">
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label for="contact-name">
+                Full Name <span>*</span>
+            </label>
+
+            <input
+                type="text"
+                id="contact-name"
+                name="name"
+                placeholder="Your full name"
+                autocomplete="name"
+                minlength="2"
+                maxlength="100"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="contact-email">
+                Email Address <span>*</span>
+            </label>
+
+            <input
+                type="email"
+                id="contact-email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                maxlength="254"
+                required
+            >
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label for="contact-phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="contact-phone"
+                name="phone"
+                placeholder="+254..."
+                autocomplete="tel"
+                maxlength="30"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="contact-company">
+                Company / Organisation
+            </label>
+
+            <input
+                type="text"
+                id="contact-company"
+                name="company"
+                placeholder="Company name"
+                autocomplete="organization"
+                maxlength="150"
+            >
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label for="contact-service">
+                Service of Interest <span>*</span>
+            </label>
+
+            <select
+                id="contact-service"
+                name="service"
+                required
+            >
+                <option value="" disabled selected>
+                    Select a service
+                </option>
+
+                <option value="software-development">
+                    Software Development
+                </option>
+
+                <option value="digital-transformation">
+                    Digital Transformation
+                </option>
+
+                <option value="creative-services">
+                    Creative Services
+                </option>
+
+                <option value="technology-advisory">
+                    Technology Advisory
+                </option>
+
+                <option value="it-support">
+                    IT Support
+                </option>
+
+                <option value="other">
+                    Other Enquiry
+                </option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="contact-budget">
+                Estimated Budget
+            </label>
+
+            <select
+                id="contact-budget"
+                name="budget"
+            >
+                <option value="" selected>
+                    Select a budget range
+                </option>
+
+                <option value="below-50000">
+                    Below KES 50,000
+                </option>
+
+                <option value="50000-100000">
+                    KES 50,000 – 100,000
+                </option>
+
+                <option value="100000-300000">
+                    KES 100,000 – 300,000
+                </option>
+
+                <option value="300000-500000">
+                    KES 300,000 – 500,000
+                </option>
+
+                <option value="500000-1000000">
+                    KES 500,000 – 1,000,000
+                </option>
+
+                <option value="above-1000000">
+                    Above KES 1,000,000
+                </option>
+
+                <option value="not-decided">
+                    Not yet decided
+                </option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="contact-subject">
+            Subject <span>*</span>
+        </label>
+
+        <input
+            type="text"
+            id="contact-subject"
+            name="subject"
+            placeholder="What would you like to discuss?"
+            minlength="3"
+            maxlength="150"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="contact-message">
+            Tell Us About Your Project <span>*</span>
+        </label>
+
+        <textarea
+            id="contact-message"
+            name="message"
+            rows="5"
+            minlength="10"
+            maxlength="5000"
+            placeholder="Describe your project, requirements or enquiry..."
+            required
+        ></textarea>
+
+    </div>
+
+
+    <!-- Honeypot spam protection -->
+    <div hidden aria-hidden="true">
+        <label for="contact-website">
+            Website
+        </label>
+
+        <input
+            type="text"
+            id="contact-website"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+        >
+    </div>
+
+
+    <div class="form-consent">
+
+        <input
+            type="checkbox"
+            id="contact-consent"
+            name="consent"
+            value="yes"
+            required
+        >
+
+        <label for="contact-consent">
+            I agree to the processing of my information
+            for the purpose of responding to my enquiry.
+        </label>
+
+    </div>
+
+
+    <button
+        type="submit"
+        class="contact-submit-btn"
+    >
+        Send Message
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.8">
+
+            <path d="m22 2-7 20-4-9-9-4Z"/>
+            <path d="M22 2 11 13"/>
+
+        </svg>
+
+    </button>
+
+
+    <p class="form-disclaimer">
+        Your information will be used to respond
+        to your enquiry.
+    </p>
+
+</form>
+<div
+    class="contact-form-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+></div>
+<div class="contact-honeypot" aria-hidden="true">
+    <label for="contact-website">Leave this field empty</label>
+    <input
+        type="text"
+        id="contact-website"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+    >
+</div>
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
-
-
-        <!-- =================================================
-             CTA
-        ================================================== -->
-
-        <section class="cta">
-
-            <div class="cta-container">
-
-                <span class="cta-label">
-                    HAVE AN IDEA?
-                </span>
-
-
-                <h2>
-                    Let's build
-                    <span>what's next.</span>
-                </h2>
-
-
-                <p>
-                    Tell us what you're working on and let's turn
-                    your idea into something meaningful.
-                </p>
-
-
-                <a
-                    href="../pages/contact.html"
-                    class="cta-button"
-                >
-                    Start a Project
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
+    </section>
 
 
 
     <!-- =====================================================
-         FOOTER
+         SECTION 04: LOCATION
     ====================================================== -->
 
-    <footer class="footer">
+    <section class="contact-location-section"
+             id="contact-location">
 
-        <div class="footer-container">
+        <div class="contact-container">
 
-            <div class="footer-main">
+            <div class="contact-section-heading">
 
+                <span class="section-eyebrow">
+                    OUR LOCATION
+                </span>
 
-                <!-- BRAND -->
+                <h2>
+                    Based in Nairobi.
+                    <span>Connected globally.</span>
+                </h2>
 
-                <div class="footer-brand">
-
-                    <h2>
-                        Noircess
-                    </h2>
-
-                    <p>Technology. Innovation. Impact</p>
-
-                </div>
-
-                    <p>                    © 2026 Noircess. All rights reserved.
-</p>
-
-                <!-- CONTACT -->
-
-                <div class="footer-column">
-
-                    <h3>
-                        Connect
-                    </h3>
-
-                    <a href="mailto:noircess@gmail.com">
-
-                        <i class="fas fa-envelope"></i>
-
-                        Email
-                    </a>
-
-
-                    <a href="tel:+254718724111">
-
-                        <i class="fas fa-phone"></i>
-
-                        Phone
-
-                    </a>
-
-           <a href="https://www.instagram.com/noircess.ke" target="_blank" 
-                      rel="noopener noreferrer">
-           <i class="fa-brands fa-instagram"></i>
-        <span>Instagram</span></a>
-
-
-                    <a
-                        href="https://wa.me/254718724111"
-                        target="_blank"
-                        rel="noopener"
-                    >
-
-                        <i class="fab fa-whatsapp"></i>
-
-                        WhatsApp
-
-                    </a>
-
-                </div>
+                <p>
+                    NOIRCESS is based in Nairobi, Kenya,
+                    working towards building technology and
+                    digital solutions with meaningful impact.
+                </p>
 
             </div>
 
 
-
-            <!-- FOOTER BOTTOM -->
-
-            <div class="footer-bottom">
-
-                <p>
-                    © 2026 Noircess. All rights reserved.
-                </p>
+            <div class="contact-location-layout">
 
 
-                <div class="footer-legal">
+                <!-- MAP PLACEHOLDER -->
 
-                    <a href="../pages/privacy policy.html">
-                        Privacy Policy
-                    </a>
+                <div class="contact-map-container">
 
-                    <a href="../pages/terms of service.html">
-                        Terms of Service
+                    <!--
+                        Future map integration.
+
+                        Do not assign a fabricated office address.
+                        Add the verified office location when available.
+                    -->
+
+                    <div class="contact-map-placeholder">
+
+                        <div class="map-decoration map-decoration-one"></div>
+
+                        <div class="map-decoration map-decoration-two"></div>
+
+                        <div class="map-location-marker">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M20 10c0 5-8 12-8 12
+                                S4 15 4 10a8 8 0 1 1 16 0z"/>
+
+                                <circle cx="12" cy="10" r="2.5"/>
+
+                            </svg>
+
+                        </div>
+
+                        <div class="map-label">
+
+                            <strong>NOIRCESS</strong>
+
+                            <span>Nairobi, Kenya</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LOCATION DETAILS -->
+
+                <div class="contact-location-details">
+
+                    <span class="section-eyebrow">
+                        FIND NOIRCESS
+                    </span>
+
+                    <h3>
+                        Nairobi, Kenya
+                    </h3>
+
+                    <p>
+                        Connect with our team through our
+                        available communication channels
+                        and discuss how we can work together.
+                    </p>
+
+
+                    <div class="location-detail-item">
+
+                        <div class="location-detail-icon">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M20 10c0 5-8 12-8 12
+                                S4 15 4 10a8 8 0 1 1 16 0z"/>
+
+                                <circle cx="12" cy="10" r="2.5"/>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <strong>Location</strong>
+
+                            <span>Nairobi, Kenya</span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="location-detail-item">
+
+                        <div class="location-detail-icon">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <circle cx="12" cy="12" r="9"/>
+
+                                <path d="M12 7v5l3 2"/>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <strong>Business Hours</strong>
+
+                            <span>Contact us to arrange a consultation.</span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="location-detail-item">
+
+                        <div class="location-detail-icon">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M4 4h16v16H4z"/>
+
+                                <path d="m4 7 8 6 8-6"/>
+
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <strong>Email</strong>
+
+                            <span>noircess@gmail.com</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="mailto:noircess@gmail.com"
+                       class="contact-location-link">
+
+                        Contact Our Team
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8">
+
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+
+                        </svg>
+
                     </a>
 
                 </div>
@@ -580,20 +1144,470 @@
 
         </div>
 
-    </footer>
+    </section>
 
 
 
     <!-- =====================================================
-         FONT AWESOME
+         SECTION 05: FREQUENTLY ASKED QUESTIONS
     ====================================================== -->
 
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
-        crossorigin="anonymous"
-    ></script>
+    <section class="contact-faq-section"
+             id="contact-faq">
 
+        <div class="contact-container">
+
+            <div class="contact-faq-layout">
+
+
+                <!-- FAQ INTRODUCTION -->
+
+                <div class="contact-faq-intro">
+
+                    <div class="faq-intro-icon">
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8">
+
+                            <circle cx="12" cy="12" r="9"/>
+
+                            <path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8
+                            C12.5 12 12 12.5 12 14"/>
+
+                            <path d="M12 17h.01"/>
+
+                        </svg>
+
+                    </div>
+
+                    <span class="section-eyebrow">
+                        NEED HELP?
+                    </span>
+
+                    <h3>
+                        Frequently Asked Questions
+                    </h3>
+
+                    <p>
+                        Find answers to common questions about
+                        working with NOIRCESS, our services
+                        and project enquiries.
+                    </p>
+
+                    <a href="mailto:noircess@gmail.com"
+                       class="faq-contact-link">
+
+                        Still have questions?
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8">
+
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- FAQ ITEMS -->
+
+                <div class="contact-faq-list">
+
+
+                    <details class="contact-faq-item">
+
+                        <summary>
+
+                            What services does NOIRCESS offer?
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="m6 9 6 6 6-6"/>
+
+                            </svg>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                NOIRCESS provides software development,
+                                digital transformation, creative services,
+                                technology advisory and IT support.
+                                Our solutions cover different business
+                                and technology requirements.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item">
+
+                        <summary>
+
+                            How do I request a quotation?
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="m6 9 6 6 6-6"/>
+
+                            </svg>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Submit an enquiry through our contact form
+                                or email us with your project requirements.
+                                We will use the information to understand
+                                your needs and prepare an appropriate quotation.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item">
+
+                        <summary>
+
+                            Does NOIRCESS work with startups and SMEs?
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="m6 9 6 6 6-6"/>
+
+                            </svg>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Yes. NOIRCESS works with startups,
+                                small and medium-sized businesses,
+                                and enterprises. Solutions are considered
+                                according to the client's requirements,
+                                objectives and available budget.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item">
+
+                        <summary>
+
+                            Can I request a custom software solution?
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="m6 9 6 6 6-6"/>
+
+                            </svg>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Yes. We provide custom software development
+                                for organisations seeking technology
+                                solutions designed around their
+                                operational and business requirements.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item">
+
+                        <summary>
+
+                            How long does a project take?
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="m6 9 6 6 6-6"/>
+
+                            </svg>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Project timelines depend on the scope,
+                                complexity, requirements and agreed
+                                deliverables. A timeline is established
+                                during project assessment and planning.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item">
+
+                        <summary>
+
+                            Does NOIRCESS work with international clients?
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="m6 9 6 6 6-6"/>
+
+                            </svg>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Yes. We can discuss project requirements
+                                with clients outside Kenya and explore
+                                suitable remote collaboration arrangements.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECTION 06: FINAL CALL TO ACTION
+    ====================================================== -->
+
+    <section class="contact-final-cta"
+             id="contact-cta">
+
+        <div class="contact-container">
+
+            <div class="contact-cta-panel">
+
+
+                <div class="contact-cta-content">
+
+                    <span class="section-eyebrow">
+                        LET'S BUILD TOGETHER
+                    </span>
+
+                    <h2>
+                        Have an idea
+                        worth <span>building?</span>
+                    </h2>
+
+                    <p>
+                        Let's turn your next challenge into an
+                        opportunity. Start a conversation with
+                        NOIRCESS and explore what's possible.
+                    </p>
+
+
+                    <div class="contact-cta-actions">
+
+                        <a href="#contact-form"
+                           class="contact-btn contact-btn-primary">
+
+                            Start a Conversation
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8">
+
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+
+                            </svg>
+
+                        </a>
+
+
+                        <a href="mailto:noircess@gmail.com"
+                           class="contact-cta-email">
+
+                            noircess@gmail.com
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DECORATIVE ELECTRIC BLUE SVG -->
+
+                <div class="contact-cta-visual">
+
+                    <svg viewBox="0 0 600 260"
+                         fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <defs>
+
+                            <linearGradient
+                                id="cta-blue-gradient"
+                                x1="0"
+                                y1="0"
+                                x2="600"
+                                y2="260"
+                                gradientUnits="userSpaceOnUse">
+
+                                <stop stop-color="#0066FF"
+                                      stop-opacity="0"/>
+
+                                <stop offset="0.5"
+                                      stop-color="#087BFF"/>
+
+                                <stop offset="1"
+                                      stop-color="#00B7FF"
+                                      stop-opacity="0"/>
+
+                            </linearGradient>
+
+                        </defs>
+
+                        <path
+                            d="M-30 180C110 100 180 260 300 165
+                            C410 80 470 130 630 20"
+                            stroke="url(#cta-blue-gradient)"
+                            stroke-width="3"
+                        />
+
+                        <path
+                            d="M-30 210C100 130 200 280 340 180
+                            C460 95 510 155 630 65"
+                            stroke="url(#cta-blue-gradient)"
+                            stroke-width="2"
+                            opacity=".6"
+                        />
+
+                        <path
+                            d="M-30 150C100 70 210 220 330 135
+                            C440 55 510 95 630 -5"
+                            stroke="url(#cta-blue-gradient)"
+                            stroke-width="1.5"
+                            opacity=".45"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container--wide footer-inner">
+
+        <div class="footer-brand">
+            <a href="index.html" class="header-logo">
+                NOIRCESS<span class="brand-dot">.</span>
+            </a>
+
+            <p class="footer-tagline">
+                Technology. Innovation. Impact.
+            </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="../index.html">Home</a>
+            <a href="./about.html">About</a>
+            <a href="./services.html">Services</a>
+            <a href="./products.html">Products</a>
+            <a href="./project.html">Projects</a>
+            <a href="./Team.html">Team</a>
+            <a href="./pricing.html">Pricing</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+
+        <div class="footer-socials" aria-label="Contact and social links">
+
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+                <img src="../assets/icons/contacts/instagram.svg" alt="">
+            </a>
+
+            <a href="mailto:hello@noircess.com"
+               class="footer-social-link"
+               aria-label="Email NOIRCESS">
+                <img src="../assets/icons/contacts/email.svg" alt="">
+            </a>
+
+            <a href="https://wa.me/YOUR_NUMBER"
+               class="footer-social-link"
+               aria-label="WhatsApp NOIRCESS">
+                <img src="../assets/icons/contacts/whatsapp.svg" alt="">
+            </a>
+
+        </div>
+
+        <div class="footer-bottom">
+            © <span id="current-year">2026</span> NOIRCESS. All rights reserved.
+        </div>
+
+    </div>
+</footer>
+<script src="../js/main.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/contact.js" defer></script>
 </body>
-
 </html>
-
