@@ -1,178 +1,105 @@
 
-/* ============================================================
+/* =====================================================
    NOIRCESS — CONTACT API
    File: api/contact.js
 
-   Runtime: Node.js
-   Platform: Vercel Serverless Functions
-
-   Integrations:
-   - Resend Email API
-   - Upstash Redis
-   - Upstash Rate Limiter
-
-   Security:
-   - Server-side validation
-   - Input sanitisation
-   - HTML escaping
-   - Honeypot protection
-   - Distributed rate limiting
-   - Request-size restriction
-   - Safe error responses
-============================================================ */
+   Runtime: Vercel Node.js
+   Email: Resend
+   Rate Limiting: Upstash Redis
+===================================================== */
 
 import { Resend } from "resend";
-
 import { Redis } from "@upstash/redis";
-
 import { Ratelimit } from "@upstash/ratelimit";
 
-
-/* ============================================================
-   01. CONFIGURATION
-============================================================ */
+/* =====================================================
+   CONFIGURATION
+===================================================== */
 
 const RECIPIENT = "noircess@gmail.com";
 
-const MAX_REQUEST_SIZE = 12 * 1024;
+const resend = process.env.RESEND_API_KEY
+    ? new Resend(process.env.RESEND_API_KEY)
+    : null;
+
+const redis = (
+    process.env.UPSTASH_REDIS_REST_URL &&
+    process.env.UPSTASH_REDIS_REST_TOKEN
+)
+    ? Redis.fromEnv()
+    : null;
+
+/* =====================================================
+   RATE LIMITER
+===================================================== */
+
+const rateLimiter = redis
+    ? new Ratelimit({
+        redis,
+        limiter: Ratelimit.slidingWindow(5, "15 m"),
+        prefix: "noircess:contact",
+        analytics: true
+    })
+    : null;
+
+
+/* =====================================================
+   ALLOWED SERVICE VALUES
+===================================================== */
 
 const ALLOWED_SERVICES = [
-    "software-development",
-    "digital-transformation",
-    "creative-services",
-    "technology-advisory",
-    "it-support",
-    "other"
+    "Software Development",
+    "Digital Transformation",
+    "Creative Services",
+    "Tech Advisory",
+    "IT Support",
+
+    "Website Development",
+    "Mobile Application Development",
+    "Enterprise Software Development",
+    "API Integration",
+
+    "Business Process Automation",
+    "System Integration",
+    "Digital Workflow Improvement",
+    "Artificial Intelligence",
+
+    "Graphic Design",
+    "Branding & Identity Design",
+    "UI/UX Design",
+    "Digital Creative Content",
+
+    "Platform Consulting",
+    "Solutions Consulting",
+    "Technology Assessment",
+    "Risk Advisory",
+    "IT Governance",
+
+    "Technical Support",
+    "System Maintenance",
+    "Network Support",
+    "IT Troubleshooting",
+
+    "Other",
+    "General Enquiry"
 ];
 
-const ALLOWED_BUDGETS = [
-    "",
-    "below-50000",
-    "50000-100000",
-    "100000-300000",
-    "300000-500000",
-    "500000-1000000",
-    "above-1000000",
-    "not-decided"
-];
 
-const SERVICE_LABELS = {
-    "software-development": "Software Development",
-    "digital-transformation": "Digital Transformation",
-    "creative-services": "Creative Services",
-    "technology-advisory": "Technology Advisory",
-    "it-support": "IT Support",
-    "other": "Other Enquiry"
-};
+/* =====================================================
+   SANITISATION
+===================================================== */
 
-const BUDGET_LABELS = {
-    "": "Not specified",
-    "below-50000": "Below KES 50,000",
-    "50000-100000": "KES 50,000 – 100,000",
-    "100000-300000": "KES 100,000 – 300,000",
-    "300000-500000": "KES 300,000 – 500,000",
-    "500000-1000000": "KES 500,000 – 1,000,000",
-    "above-1000000": "Above KES 1,000,000",
-    "not-decided": "Not yet decided"
-};
+function clean(value, maxLength = 2000) {
 
-
-/* ============================================================
-   02. INITIALISE SERVICES
-============================================================ */
-
-let resendClient;
-
-let rateLimiter;
-
-
-function getResend() {
-
-    if (resendClient) return resendClient;
-
-    if (!process.env.RESEND_API_KEY) {
-
-        throw new Error("Resend configuration missing.");
-
+    if (typeof value !== "string") {
+        return "";
     }
 
-    resendClient = new Resend(
-        process.env.RESEND_API_KEY
-    );
-
-    return resendClient;
-
-}
-
-
-function getRateLimiter() {
-
-    if (rateLimiter) return rateLimiter;
-
-    const redis = Redis.fromEnv();
-
-    rateLimiter = new Ratelimit({
-
-        redis,
-
-        limiter: Ratelimit.slidingWindow(
-            5,
-            "10 m"
-        ),
-
-        prefix: "noircess:contact",
-
-        analytics: true,
-
-        enableProtection: true
-
-    });
-
-    return rateLimiter;
-
-}
-
-
-/* ============================================================
-   03. RESPONSE HELPER
-============================================================ */
-
-function respond(res, status, message, extra = {}) {
-
-    return res.status(status).json({
-
-        success: status >= 200 && status < 300,
-
-        message,
-
-        ...extra
-
-    });
-
-}
-
-
-/* ============================================================
-   04. INPUT SANITISATION
-============================================================ */
-
-function cleanString(value, maxLength) {
-
-    if (typeof value !== "string") return "";
-
     return value
-
-        .normalize("NFC")
-
-        .replace(
-            /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,
-            ""
-        )
-
+        .normalize("NFKC")
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
         .trim()
-
         .slice(0, maxLength);
-
 }
 
 
@@ -181,33 +108,20 @@ function escapeHTML(value = "") {
     return String(value).replace(
         /[&<>"']/g,
         character => ({
-
             "&": "&amp;",
-
             "<": "&lt;",
-
             ">": "&gt;",
-
             '"': "&quot;",
-
             "'": "&#39;"
-
         })[character]
     );
 
 }
 
 
-function normaliseEmail(value) {
-
-    return cleanString(value, 254).toLowerCase();
-
-}
-
-
-/* ============================================================
-   05. VALIDATION HELPERS
-============================================================ */
+/* =====================================================
+   VALIDATION
+===================================================== */
 
 function validEmail(email) {
 
@@ -219,345 +133,188 @@ function validEmail(email) {
 }
 
 
-function validPhone(phone) {
-
-    if (!phone) return true;
-
-    return /^\+?[0-9\s().-]{7,30}$/.test(phone);
-
-}
-
-
-function validConsent(value) {
+function validSubject(subject) {
 
     return (
-        value === true ||
-        value === "true" ||
-        value === "yes" ||
-        value === "on"
+        subject.length >= 3 &&
+        subject.length <= 150 &&
+        !/[\r\n]/.test(subject)
     );
 
 }
 
 
-/* ============================================================
-   06. VALIDATE FORM DATA
-============================================================ */
+function validService(service) {
 
-function validatePayload(data) {
-
-    const errors = {};
-
-    if (data.name.length < 2) {
-
-        errors.name = "Please enter your full name.";
-
-    }
-
-    if (!validEmail(data.email)) {
-
-        errors.email = "Please enter a valid email address.";
-
-    }
-
-    if (!validPhone(data.phone)) {
-
-        errors.phone = "Please enter a valid phone number.";
-
-    }
-
-    if (data.company.length > 150) {
-
-        errors.company = "Company name is too long.";
-
-    }
-
-    if (
-        data.subject.length < 3 ||
-        data.subject.length > 150
-    ) {
-
-        errors.subject = "Please enter a valid subject.";
-
-    }
-
-    if (!ALLOWED_SERVICES.includes(data.service)) {
-
-        errors.service = "Please select a valid service.";
-
-    }
-
-    if (!ALLOWED_BUDGETS.includes(data.budget)) {
-
-        errors.budget = "Please select a valid budget.";
-
-    }
-
-    if (
-        data.message.length < 10 ||
-        data.message.length > 5000
-    ) {
-
-        errors.message = "Please provide a message between 10 and 5000 characters.";
-
-    }
-
-    if (!validConsent(data.consent)) {
-
-        errors.consent = "Consent is required.";
-
-    }
-
-    return errors;
+    return ALLOWED_SERVICES.includes(service);
 
 }
 
 
-/* ============================================================
-   07. CLIENT IP
-============================================================ */
+function validConsent(consent) {
+
+    return (
+        consent === true ||
+        consent === "on" ||
+        consent === "true" ||
+        consent === "yes"
+    );
+
+}
+
+
+/* =====================================================
+   CLIENT IP
+===================================================== */
 
 function getClientIP(req) {
 
-    const vercelIP =
-        req.headers["x-vercel-forwarded-for"];
+    const forwarded = req.headers["x-forwarded-for"];
 
-    if (
-        typeof vercelIP === "string" &&
-        vercelIP.trim()
-    ) {
+    if (typeof forwarded === "string") {
 
-        return vercelIP.split(",")[0].trim();
+        const ip = forwarded.split(",")[0].trim();
+
+        if (ip) return ip;
 
     }
 
-    const forwarded =
-        req.headers["x-forwarded-for"];
-
-    if (
-        typeof forwarded === "string" &&
-        forwarded.trim()
-    ) {
-
-        return forwarded.split(",")[0].trim();
-
-    }
-
-    return req.socket?.remoteAddress || null;
+    return (
+        req.headers["x-real-ip"] ||
+        "unknown"
+    );
 
 }
 
 
-/* ============================================================
-   08. EMAIL TEMPLATE
-============================================================ */
+/* =====================================================
+   RESPONSE HELPERS
+===================================================== */
 
-function buildEmail(data) {
+function success(res, message) {
 
-    const name = escapeHTML(data.name);
+    return res.status(200).json({
+        success: true,
+        message
+    });
 
-    const email = escapeHTML(data.email);
+}
 
-    const phone = escapeHTML(
-        data.phone || "Not provided"
-    );
 
-    const company = escapeHTML(
-        data.company || "Not provided"
-    );
+function failure(res, status, message) {
 
-    const subject = escapeHTML(data.subject);
+    return res.status(status).json({
+        success: false,
+        message
+    });
 
-    const service = escapeHTML(
-        SERVICE_LABELS[data.service]
-    );
+}
 
-    const budget = escapeHTML(
-        BUDGET_LABELS[data.budget]
-    );
 
-    const message = escapeHTML(data.message)
-        .replace(/\r\n|\r|\n/g, "<br>");
+/* =====================================================
+   EMAIL TEMPLATE
+===================================================== */
 
-    const html = `
-    <!DOCTYPE html>
-    <html lang="en">
+function createEmailHTML(data) {
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NOIRCESS Enquiry</title>
-    </head>
+    const safeName = escapeHTML(data.name);
+    const safeEmail = escapeHTML(data.email);
+    const safePhone = escapeHTML(data.phone);
+    const safeCompany = escapeHTML(data.company);
+    const safeSubject = escapeHTML(data.subject);
+    const safeService = escapeHTML(data.service);
+    const safeBudget = escapeHTML(data.budget);
 
-    <body style="
-        margin:0;
-        padding:30px 15px;
-        background:#f5f8ff;
-        font-family:Arial,Helvetica,sans-serif;
-        color:#07152e;
-    ">
+    const safeMessage = escapeHTML(data.message)
+        .replace(/\n/g, "<br>");
 
-        <div style="
-            max-width:650px;
-            margin:0 auto;
+    return `
+        <!DOCTYPE html>
+        <html>
+        <body style="
+            margin:0;
             padding:30px;
-            background:#ffffff;
-            border:1px solid #e4edfa;
-            border-radius:12px;
+            background:#f5f8ff;
+            font-family:Arial,sans-serif;
+            color:#07152e;
         ">
 
             <div style="
-                padding-bottom:20px;
-                border-bottom:1px solid #e4edfa;
+                max-width:650px;
+                margin:auto;
+                padding:30px;
+                background:#ffffff;
+                border:1px solid #e4edfa;
+                border-radius:12px;
             ">
 
-                <h1 style="
-                    margin:0;
-                    font-size:25px;
-                    color:#07152e;
+                <h2 style="color:#07152e;">
+                    NOIRCESS
+                    <span style="color:#0866ff;">.</span>
+                </h2>
+
+                <p style="color:#0866ff;">
+                    NEW WEBSITE ENQUIRY
+                </p>
+
+                <h3>Contact Information</h3>
+
+                <p><strong>Name:</strong> ${safeName}</p>
+                <p><strong>Email:</strong> ${safeEmail}</p>
+                <p><strong>Phone:</strong> ${safePhone || "Not provided"}</p>
+                <p><strong>Company:</strong> ${safeCompany || "Not provided"}</p>
+
+                <hr style="border:0;border-top:1px solid #e4edfa;">
+
+                <h3>Project Information</h3>
+
+                <p><strong>Subject:</strong> ${safeSubject || "Not provided"}</p>
+                <p><strong>Service:</strong> ${safeService || "Not specified"}</p>
+                <p><strong>Budget:</strong> ${safeBudget || "Not specified"}</p>
+
+                <h3>Enquiry Message</h3>
+
+                <div style="
+                    padding:18px;
+                    background:#f5f9ff;
+                    border-radius:8px;
+                    line-height:1.8;
+                    overflow-wrap:anywhere;
                 ">
-                    NOIRCESS<span style="color:#0866ff;">.</span>
-                </h1>
+                    ${safeMessage}
+                </div>
 
                 <p style="
-                    color:#0866ff;
-                    font-size:11px;
-                    font-weight:bold;
-                    letter-spacing:2px;
+                    margin-top:30px;
+                    color:#657897;
+                    font-size:12px;
                 ">
-                    TECHNOLOGY. INNOVATION. IMPACT.
+                    Received through the NOIRCESS website contact form.
                 </p>
 
             </div>
 
-            <h2>New Website Enquiry</h2>
-
-            <p style="color:#657897;font-size:13px;">
-                A new enquiry has been submitted through the NOIRCESS website.
-            </p>
-
-            <h3>Contact Information</h3>
-
-            <table style="
-                width:100%;
-                border-collapse:collapse;
-                font-size:13px;
-            ">
-
-                <tr>
-                    <td style="padding:10px;color:#657897;">Name</td>
-                    <td style="padding:10px;">${name}</td>
-                </tr>
-
-                <tr>
-                    <td style="padding:10px;color:#657897;">Email</td>
-                    <td style="padding:10px;">${email}</td>
-                </tr>
-
-                <tr>
-                    <td style="padding:10px;color:#657897;">Phone</td>
-                    <td style="padding:10px;">${phone}</td>
-                </tr>
-
-                <tr>
-                    <td style="padding:10px;color:#657897;">Company</td>
-                    <td style="padding:10px;">${company}</td>
-                </tr>
-
-            </table>
-
-            <hr style="
-                border:0;
-                border-top:1px solid #e4edfa;
-                margin:20px 0;
-            ">
-
-            <h3>Project Information</h3>
-
-            <p><strong>Subject:</strong> ${subject}</p>
-
-            <p><strong>Service:</strong> ${service}</p>
-
-            <p><strong>Budget:</strong> ${budget}</p>
-
-            <h3>Enquiry Message</h3>
-
-            <div style="
-                padding:18px;
-                background:#f5f9ff;
-                border-radius:8px;
-                line-height:1.8;
-                font-size:13px;
-                overflow-wrap:anywhere;
-            ">
-                ${message}
-            </div>
-
-            <div style="
-                margin-top:30px;
-                padding-top:20px;
-                border-top:1px solid #e4edfa;
-                color:#91a1b9;
-                font-size:11px;
-            ">
-                NOIRCESS — Technology. Innovation. Impact.
-            </div>
-
-        </div>
-
-    </body>
-    </html>
+        </body>
+        </html>
     `;
-
-    const text = `
-NOIRCESS — NEW WEBSITE ENQUIRY
-
-CONTACT INFORMATION
-
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone || "Not provided"}
-Company: ${data.company || "Not provided"}
-
-PROJECT INFORMATION
-
-Subject: ${data.subject}
-Service: ${SERVICE_LABELS[data.service]}
-Budget: ${BUDGET_LABELS[data.budget]}
-
-MESSAGE
-
-${data.message}
-
-NOIRCESS
-Technology. Innovation. Impact.
-    `;
-
-    return { html, text };
-
 }
 
 
-/* ============================================================
-   09. MAIN API HANDLER
-============================================================ */
+/* =====================================================
+   MAIN API HANDLER
+===================================================== */
 
 export default async function handler(req, res) {
 
     res.setHeader("Cache-Control", "no-store");
 
-    res.setHeader(
-        "X-Content-Type-Options",
-        "nosniff"
-    );
-
-    /* HTTP METHOD */
+    res.setHeader("X-Content-Type-Options", "nosniff");
 
     if (req.method !== "POST") {
 
         res.setHeader("Allow", "POST");
 
-        return respond(
+        return failure(
             res,
             405,
             "Method not allowed."
@@ -565,48 +322,30 @@ export default async function handler(req, res) {
 
     }
 
-
-    /* CONTENT TYPE */
-
-    const contentType =
-        req.headers["content-type"] || "";
-
-    if (
-        !contentType.toLowerCase().includes("application/json")
-    ) {
-
-        return respond(
-            res,
-            415,
-            "Unsupported request format."
-        );
-
-    }
-
-
-    /* REQUEST SIZE */
-
-    const contentLength = Number(
-        req.headers["content-length"] || 0
-    );
-
-    if (
-        Number.isFinite(contentLength) &&
-        contentLength > MAX_REQUEST_SIZE
-    ) {
-
-        return respond(
-            res,
-            413,
-            "Your submission is too large."
-        );
-
-    }
-
-
     try {
 
-        /* BODY VALIDATION */
+        /* ---------------------------------------------
+           CHECK CONFIGURATION
+        --------------------------------------------- */
+
+        if (!resend || !rateLimiter) {
+
+            console.error(
+                "NOIRCESS: Missing Resend or Upstash configuration."
+            );
+
+            return failure(
+                res,
+                503,
+                "The enquiry service is temporarily unavailable. Please try again later."
+            );
+
+        }
+
+
+        /* ---------------------------------------------
+           VALIDATE REQUEST BODY
+        --------------------------------------------- */
 
         const body = req.body;
 
@@ -616,218 +355,245 @@ export default async function handler(req, res) {
             Array.isArray(body)
         ) {
 
-            return respond(
+            return failure(
                 res,
                 400,
-                "Invalid submission."
-            );
-
-        }
-
-        if (
-            Buffer.byteLength(
-                JSON.stringify(body),
-                "utf8"
-            ) > MAX_REQUEST_SIZE
-        ) {
-
-            return respond(
-                res,
-                413,
-                "Your submission is too large."
+                "Invalid request."
             );
 
         }
 
 
-        /* HONEYPOT */
+        /* ---------------------------------------------
+           HONEYPOT SPAM PROTECTION
+        --------------------------------------------- */
 
-        const honeypot = cleanString(
-            body.website,
-            200
-        );
+        const website = clean(body.website, 200);
 
-        if (honeypot) {
+        if (website) {
 
-            return respond(
+            // Do not reveal the honeypot to bots.
+            return success(
                 res,
-                200,
                 "Your enquiry has been received."
             );
 
         }
 
 
-        /* SANITISE INPUT */
+        /* ---------------------------------------------
+           SANITISE INPUT
+        --------------------------------------------- */
 
         const data = {
 
-            name: cleanString(body.name, 100),
+            name: clean(body.name, 100),
 
-            email: normaliseEmail(body.email),
+            email: clean(body.email, 254),
 
-            phone: cleanString(body.phone, 30),
+            phone: clean(body.phone, 30),
 
-            company: cleanString(body.company, 150),
+            company: clean(body.company, 150),
 
-            service: cleanString(body.service, 100),
+            subject: clean(body.subject, 150),
 
-            budget: cleanString(body.budget, 100),
+            service: clean(body.service, 150),
 
-            subject: cleanString(body.subject, 150),
+            budget: clean(body.budget, 100),
 
-            message: cleanString(body.message, 5000),
-
-            consent: body.consent
+            message: clean(body.message, 5000)
 
         };
 
 
-        /* VALIDATION */
+        /* ---------------------------------------------
+           REQUIRED FIELD VALIDATION
+        --------------------------------------------- */
 
-        const errors = validatePayload(data);
+        if (data.name.length < 2) {
 
-        if (Object.keys(errors).length > 0) {
-
-            return res.status(400).json({
-
-                success: false,
-
-                message: "Please correct the highlighted fields.",
-
-                errors
-
-            });
-
-        }
-
-
-        /* RATE LIMITING */
-
-        const ip = getClientIP(req);
-
-        if (!ip || ip === "unknown") {
-
-            return respond(
+            return failure(
                 res,
-                503,
-                "Unable to verify your connection. Please try again later."
+                400,
+                "Please enter your full name."
             );
 
         }
 
-        const limiter = getRateLimiter();
+        if (!validEmail(data.email)) {
 
-        const limit = await limiter.limit(ip);
+            return failure(
+                res,
+                400,
+                "Please enter a valid email address."
+            );
+
+        }
+
+        if (data.subject && !validSubject(data.subject)) {
+
+            return failure(
+                res,
+                400,
+                "Please enter a valid enquiry subject."
+            );
+
+        }
+
+        if (data.service && !validService(data.service)) {
+
+            return failure(
+                res,
+                400,
+                "Please select a valid service."
+            );
+
+        }
+
+        if (data.message.length < 10) {
+
+            return failure(
+                res,
+                400,
+                "Please provide more details about your enquiry."
+            );
+
+        }
+
+        if (!validConsent(body.consent)) {
+
+            return failure(
+                res,
+                400,
+                "Please agree to the contact terms."
+            );
+
+        }
+
+
+        /* ---------------------------------------------
+           RATE LIMITING
+           5 REQUESTS PER IP / 15 MINUTES
+        --------------------------------------------- */
+
+        const ip = getClientIP(req);
+
+        if (ip === "unknown") {
+
+            return failure(
+                res,
+                400,
+                "Unable to verify your request. Please try again."
+            );
+
+        }
+
+        const rateLimit = await rateLimiter.limit(ip);
 
         res.setHeader(
             "X-RateLimit-Limit",
-            String(limit.limit)
+            String(rateLimit.limit)
         );
 
         res.setHeader(
             "X-RateLimit-Remaining",
-            String(limit.remaining)
+            String(rateLimit.remaining)
         );
 
-        res.setHeader(
-            "X-RateLimit-Reset",
-            String(limit.reset)
-        );
+        if (!rateLimit.success) {
 
-        if (!limit.success) {
+            if (rateLimit.reset) {
 
-            res.setHeader(
-                "Retry-After",
-                String(
-                    Math.max(
-                        1,
-                        Math.ceil(
-                            (limit.reset - Date.now()) / 1000
+                res.setHeader(
+                    "Retry-After",
+                    String(
+                        Math.max(
+                            1,
+                            Math.ceil(
+                                (rateLimit.reset - Date.now()) / 1000
+                            )
                         )
                     )
-                )
-            );
+                );
 
-            return respond(
+            }
+
+            return failure(
                 res,
                 429,
-                "Too many enquiries. Please try again later."
+                "You have submitted too many enquiries. Please try again in 15 minutes."
             );
 
         }
 
 
-        /* EMAIL CONFIGURATION */
+        /* ---------------------------------------------
+           EMAIL DELIVERY
+        --------------------------------------------- */
 
-        const fromEmail =
-            process.env.CONTACT_FROM_EMAIL;
+        const emailResult = await resend.emails.send({
 
-        if (!fromEmail || !process.env.RESEND_API_KEY) {
-
-            throw new Error("Email service configuration missing.");
-
-        }
-
-
-        /* BUILD EMAIL */
-
-        const email = buildEmail(data);
-
-
-        /* SEND EMAIL */
-
-        const resend = getResend();
-
-        const result = await resend.emails.send({
-
-            from: fromEmail,
+            from: process.env.CONTACT_FROM_EMAIL,
 
             to: [RECIPIENT],
 
             replyTo: data.email,
 
-            subject: `NOIRCESS Enquiry: ${data.subject} — ${data.name}`,
+            subject: `New NOIRCESS Enquiry — ${
+                data.subject || data.service || data.name
+            }`,
 
-            html: email.html,
-
-            text: email.text
+            html: createEmailHTML(data)
 
         });
 
 
-        if (result.error) {
+        /* ---------------------------------------------
+           HANDLE RESEND ERRORS
+        --------------------------------------------- */
+
+        if (emailResult.error || !emailResult.data?.id) {
 
             console.error(
-                "[NOIRCESS EMAIL]",
-                result.error.message
+                "NOIRCESS Resend delivery error:",
+                emailResult.error
             );
 
-            throw new Error("Email delivery failed.");
+            return failure(
+                res,
+                502,
+                "We could not deliver your enquiry. Please try again later."
+            );
 
         }
 
 
-        /* SUCCESS */
+        /* ---------------------------------------------
+           SUCCESS
+        --------------------------------------------- */
 
-        return respond(
+        console.info(
+            "NOIRCESS enquiry delivered:",
+            emailResult.data.id
+        );
+
+        return success(
             res,
-            200,
-            "Thank you! Your enquiry has been received successfully."
+            "Your enquiry has been received successfully."
         );
 
 
     } catch (error) {
 
         console.error(
-            "[NOIRCESS CONTACT API]",
-            error.message || "Unexpected server error."
+            "NOIRCESS contact API error:",
+            error
         );
 
-        return respond(
+        return failure(
             res,
             500,
-            "We could not process your enquiry. Please try again later."
+            "An unexpected error occurred. Please try again later."
         );
 
     }
