@@ -650,7 +650,9 @@
 
 
                    
-<form class="contact-form" method="POST">
+<form class="contact-form" id="contactForm" action="https://formspree.io/f/mpppebba" 
+enctype="multipart/form-data"
+ method="POST">
 
     <div class="form-row">
 
@@ -853,14 +855,14 @@
 
 
     <!-- Honeypot spam protection -->
-    <div hidden aria-hidden="true">
-        <label for="contact-website">
-            Website
+    <div class="form-honeypot" aria-hidden="true">
+        <label for="website">
+            Leave this field empty
         </label>
 
         <input
             type="text"
-            id="contact-website"
+            id="website"
             name="website"
             tabindex="-1"
             autocomplete="off"
@@ -917,15 +919,7 @@
     aria-live="polite"
     aria-atomic="true"
 ></div>
-<div class="contact-honeypot" aria-hidden="true">
-    <label for="contact-website">Leave this field empty</label>
-    <input
-        type="text"
-        id="contact-website"
-        name="website"
-        tabindex="-1"
-        autocomplete="off"
-    >
+
 </div>
                 </div>
 

@@ -1,209 +1,197 @@
+
+/* =====================================================
+   NOIRCESS — CONTACT FORM
+   File: contact.js
+   Backend: Formspree
+===================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const form = document.querySelector(".contact-form");
-    const submitButton = document.querySelector(".contact-submit-btn");
 
-    if (!form || !submitButton) return;
+    if (!form) return;
 
-    let isSubmitting = false;
+    // Formspree Configuration
+    const FORMSPREE_ENDPOINT =
+        "https://formspree.io/f/YOUR_FORM_ID";
 
-    // Create the status message dynamically.
-    // No HTML or CSS changes are required.
-    let statusElement = form.querySelector(".contact-form-status");
+    const submitButton = form.querySelector(
+        ".contact-submit-btn"
+    );
 
-    if (!statusElement) {
-        statusElement = document.createElement("div");
-        statusElement.className = "contact-form-status";
-        statusElement.setAttribute("role", "status");
-        statusElement.setAttribute("aria-live", "polite");
-        form.appendChild(statusElement);
+    const originalButtonContent =
+        submitButton?.innerHTML;
+
+    // Create status message without changing HTML
+    const status = document.createElement("div");
+
+    status.className = "contact-form-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+
+    form.appendChild(status);
+
+    // Display submission status
+    function showStatus(message, type) {
+        status.textContent = message;
+        status.dataset.type = type;
     }
 
-    const originalButtonContent = submitButton.innerHTML;
-
-    /**
-     * Display form feedback.
-     */
-    function showStatus(message, type = "error") {
-        statusElement.textContent = message;
-        statusElement.className = `contact-form-status ${type}`;
-        statusElement.style.display = "block";
+    // Get form field
+    function getField(name) {
+        return form.querySelector(`[name="${name}"]`);
     }
 
-    /**
-     * Clear previous feedback.
-     */
-    function clearStatus() {
-        statusElement.textContent = "";
-        statusElement.className = "contact-form-status";
-        statusElement.style.display = "none";
+    // Get trimmed field value
+    function getValue(name) {
+        return getField(name)?.value.trim() || "";
     }
 
-    /**
-     * Safely read and parse the API response.
-     * Handles JSON, empty responses and unexpected server responses.
-     */
-    async function parseResponse(response) {
-        const responseText = await response.text();
+    // Form validation
+    function validateForm() {
 
-        if (!responseText) {
-            throw new Error(
-                response.ok
-                    ? "The server returned an empty response. Please try again."
-                    : `The request failed with status ${response.status}. Please try again.`
-            );
-        }
+        const name = getValue("name");
+        const email = getValue("email");
+        const message = getValue("message");
 
-        let result;
-
-        try {
-            result = JSON.parse(responseText);
-        } catch {
-            throw new Error(
-                `The server returned an invalid response (${response.status}). Please try again later.`
-            );
-        }
-
-        if (!response.ok || result.success !== true) {
-            const message =
-                result.message ||
-                getErrorMessage(response.status);
-
-            throw new Error(message);
-        }
-
-        return result;
-    }
-
-    /**
-     * Provide fallback messages for HTTP errors.
-     */
-    function getErrorMessage(status) {
-        switch (status) {
-            case 400:
-                return "Please check your information and try again.";
-
-            case 405:
-                return "This request method is not supported.";
-
-            case 429:
-                return "Too many enquiries have been submitted. Please wait before trying again.";
-
-            case 500:
-                return "A server error occurred. Please try again later.";
-
-            case 503:
-                return "The contact service is temporarily unavailable. Please try again later.";
-
-            default:
-                return "Unable to send your enquiry. Please try again.";
-        }
-    }
-
-    /**
-     * Validate the user's input before submission.
-     */
-    function validateForm(formData) {
-        const name = (formData.get("name") || "").trim();
-        const email = (formData.get("email") || "").trim();
-        const message = (formData.get("message") || "").trim();
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (name.length < 2) {
-            return "Please enter a valid name.";
+            showStatus(
+                "Please enter your full name.",
+                "error"
+            );
+
+            getField("name")?.focus();
+            return false;
         }
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
         if (!emailPattern.test(email)) {
-            return "Please enter a valid email address.";
+            showStatus(
+                "Please enter a valid email address.",
+                "error"
+            );
+
+            getField("email")?.focus();
+            return false;
         }
 
         if (message.length < 10) {
-            return "Your message must contain at least 10 characters.";
+            showStatus(
+                "Please provide more details about your enquiry.",
+                "error"
+            );
+
+            getField("message")?.focus();
+            return false;
         }
 
         if (!form.checkValidity()) {
             form.reportValidity();
-            return "Please complete all required fields correctly.";
+            return false;
         }
 
-        return null;
+        return true;
     }
 
-    /**
-     * Handle form submission.
-     */
+    // Form submission
     form.addEventListener("submit", async (event) => {
+
         event.preventDefault();
 
-        if (isSubmitting) return;
+        // Prevent duplicate submissions
+        if (submitButton?.disabled) return;
 
-        clearStatus();
-
-        const formData = new FormData(form);
-
-        // Client-side validation.
-        const validationError = validateForm(formData);
-
-        if (validationError) {
-            showStatus(validationError, "error");
-            return;
-        }
-
-        // Match the corrected api/contact.js payload.
-        const payload = {
-            name: (formData.get("name") || "").trim(),
-            email: (formData.get("email") || "").trim(),
-            phone: (formData.get("phone") || "").trim(),
-            company: (formData.get("company") || "").trim(),
-
-            // Optional field: sends an empty string if absent.
-            subject: (formData.get("subject") || "").trim(),
-
-            service: (formData.get("service") || "").trim(),
-            budget: (formData.get("budget") || "").trim(),
-            message: (formData.get("message") || "").trim(),
-
-            consent: formData.get("consent") || "",
-
-            // Honeypot field for spam protection.
-            website: (formData.get("website") || "").trim()
-        };
-
-        isSubmitting = true;
-        submitButton.disabled = true;
-        submitButton.innerHTML = "Sending...";
-
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(payload)
-            });
-
-            const result = await parseResponse(response);
-
-            showStatus(
-                result.message || "Your enquiry has been sent successfully. Thank you for contacting NOIRCESS.",
-                "success"
+        // Honeypot spam protection
+        if (getValue("website")) {
+            console.warn(
+                "NOIRCESS: Spam submission detected."
             );
 
             form.reset();
+            return;
+        }
 
-        } catch (error) {
-            console.error("NOIRCESS contact form error:", error);
+        // Validate form
+        if (!validateForm()) return;
+
+        try {
+
+            // Disable submit button
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = "Sending...";
+            }
 
             showStatus(
-                error.message || "Unable to send your enquiry. Please try again.",
+                "Sending your enquiry...",
+                "loading"
+            );
+
+            // Prepare form data
+            const formData = new FormData(form);
+
+            // Submit directly to Formspree
+            const response = await fetch(
+                FORMSPREE_ENDPOINT,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Accept": "application/json"
+                    },
+
+                    body: formData
+                }
+            );
+
+            const result = await response.json();
+
+            // Handle unsuccessful submission
+            if (!response.ok) {
+
+                throw new Error(
+                    result.errors
+                        ?.map(error => error.message)
+                        .join(", ") ||
+                    result.error ||
+                    "Unable to send your enquiry."
+                );
+            }
+
+            // Successful submission
+            showStatus(
+                "Thank you! Your enquiry has been sent successfully. Our team will get back to you.",
+                "success"
+            );
+
+            // Reset form
+            form.reset();
+
+        } catch (error) {
+
+            console.error(
+                "NOIRCESS contact form error:",
+                error
+            );
+
+            showStatus(
+                error.message ||
+                "Something went wrong. Please try again.",
                 "error"
             );
 
         } finally {
-            isSubmitting = false;
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonContent;
+
+            // Restore submit button
+            if (submitButton) {
+                submitButton.disabled = false;
+
+                submitButton.innerHTML =
+                    originalButtonContent;
+            }
         }
     });
+
 });
