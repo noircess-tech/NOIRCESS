@@ -2203,7 +2203,7 @@
   font-size: 9px;
   white-space: nowrap;
   transition: color 180ms ease, background 180ms ease,
-              border-color 180ms ease;
+            border-color 180ms ease;
 }
 
 .team-filter:hover {
@@ -2233,7 +2233,8 @@
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 5px 15px rgba(25, 68, 130, 0.025);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+  transition: color 180ms ease, background 180ms ease,
+            border-color 180ms ease;
 }
 
 .team-mini-card:hover {
